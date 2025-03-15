@@ -4,8 +4,9 @@ extends CharacterBody2D
 const SPEED = 300.0
 const BASE_ANIMATION_SPEED: int = 2
 const JUMP_VELOCITY = -400.0
+const DECEL_RATE = 15.0
 
-enum {IDLE, RUN, JUMP}
+enum {IDLE, RUN, JUMP, SKID}
 
 var movement_state: int = IDLE
 
@@ -33,19 +34,23 @@ func _physics_process(delta):
 			movement_state = RUN
 		else:
 			movement_state = IDLE
+			
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
+		var direction = Input.is_action_pressed("ui_left")
+		if direction:
+			#if direction == 1:
+				#%AnimatedSprite2D.flip_h = false
+			#else:
+				#%AnimatedSprite2D.flip_h = true
+			movement_state = SKID
+			velocity.x = move_toward(velocity.x, 0, DECEL_RATE) #move toward 0 while holding LEFT
+		else:
+			movement_state = RUN
+			velocity.x = SPEED
+		
 	else:
 		movement_state = JUMP
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
-		if direction == 1:
-			%AnimatedSprite2D.flip_h = false
-		else:
-			%AnimatedSprite2D.flip_h = true
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
