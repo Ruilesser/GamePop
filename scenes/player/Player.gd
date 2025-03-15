@@ -19,11 +19,11 @@ func _process(_delta):
 			%AnimatedSprite2D.speed_scale = BASE_ANIMATION_SPEED
 		JUMP:
 			%AnimatedSprite2D.play("jump")
+		SKID:
+			%AnimatedSprite2D.play("idle")
+
 
 func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -51,6 +51,7 @@ func _physics_process(delta):
 		
 	else:
 		movement_state = JUMP
-
+		# Add the gravity.
+		velocity += get_gravity() * delta
 
 	move_and_slide()
