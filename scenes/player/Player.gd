@@ -17,7 +17,6 @@ func _process(_delta):
 			%AnimatedSprite2D.play("run")
 			%AnimatedSprite2D.speed_scale = BASE_ANIMATION_SPEED
 		JUMP:
-			print("Jumping!")
 			%AnimatedSprite2D.play("jump")
 
 func _physics_process(delta):
