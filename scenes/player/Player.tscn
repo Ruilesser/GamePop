@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dfleewerb4fl" path="res://scenes/util/health/Health.tscn" id="12_trjcv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ghtk"]
-size = Vector2(21, 24)
+size = Vector2(28, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pwe4b"]
 atlas = ExtResource("2_puxw3")
@@ -363,18 +363,19 @@ metadata/MovementState = 0
 metadata/StunType = 0
 
 [node name="SlidingCol" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0.75, 8)
+position = Vector2(1, 6.5)
 shape = SubResource("RectangleShape2D_1ghtk")
 disabled = true
 
 [node name="StandingCol" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(2.5, 3)
 shape = SubResource("RectangleShape2D_1ghtk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_lkk0i")
 animation = &"idle"
 script = ExtResource("9_31hri")
