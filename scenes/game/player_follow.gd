@@ -18,12 +18,9 @@ func _process(delta: float) -> void:
 	var delta_position = global_position.x -player_node.global_position.x
 	if (66>abs(delta_position) and abs(delta_position) >= 50):
 		global_position.x += (abs(delta_position) - 66)/30 * sign(player_node.velocity.x)
-		print("middle left/right")
 	elif (abs(delta_position)>66):
 		global_position.x = player_node.global_position.x - 66* sign(player_node.velocity.x)
-		print("edge")
 	if (player_node.movement_state == 0 and abs(delta_position) >= 33):
 		print(player_node.direction)
 		global_position.x = move_toward(global_position.x,player_node.global_position.x - 33,2)
-		print("not moving")
 	
