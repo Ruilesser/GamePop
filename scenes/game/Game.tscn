@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://wl11sgkxst1s"]
+[gd_scene load_steps=10 format=4 uid="uid://wl11sgkxst1s"]
 
 [ext_resource type="Texture2D" uid="uid://cihu3qwi3nwtr" path="res://assets/backgrounds/full_moon.png" id="1_6lqnc"]
 [ext_resource type="Texture2D" uid="uid://bf2dmwth6kibw" path="res://assets/tilesets/TX Tileset Ground.png" id="2_jpc7x"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/game/player_follow.gd" id="3_u4hmd"]
 [ext_resource type="Texture2D" uid="uid://bm0a7ol2f3mm" path="res://assets/backgrounds/Untitled1.png" id="5_glk7o"]
 [ext_resource type="Texture2D" uid="uid://dfluwtfalo5cq" path="res://assets/backgrounds/Untitled_w_trans.png" id="6_3h6ys"]
+[ext_resource type="PackedScene" uid="uid://c1lc0wpvh7axe" path="res://scenes/enemies/basic/BasicEnemy.tscn" id="7_horas"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kwctc"]
 texture = ExtResource("2_jpc7x")
@@ -398,3 +399,8 @@ autoscroll = Vector2(2, 0)
 
 [node name="top layer" type="Sprite2D" parent="Node/Parallax2D2"]
 texture = ExtResource("6_3h6ys")
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="BasicEnemy" parent="Enemies" instance=ExtResource("7_horas")]
+position = Vector2(78, 524)
