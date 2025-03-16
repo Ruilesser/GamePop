@@ -10,7 +10,7 @@ func _ready():
 
 # Play the animation based on the movement state.
 func play_movement_animation(movement_state: int):
-	if (old_movement_state == movement_state or get_parent().is_stunned()):
+	if (old_movement_state == movement_state or %Stun.is_stunned()):
 		return
 	print("Playing animation for state: ", movement_state)
 	match_movement_animation_on_state(movement_state)

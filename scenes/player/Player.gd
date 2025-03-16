@@ -15,46 +15,12 @@ const SLIDING_SPEED = SPEED + 100
 
 var movement_state: int = Enums.MovementState.IDLE
 
-var stun_type: int = Enums.StunType.NONE
-var stun_flag: int = 0
-var stun_time_left: int = 0
-
 var combo_number: int = 0
 var attacking_debounce: bool = false
 var max_combo: int = 2
 
 var current_score = 0
 
-# Check if the player is stunned.
-func is_stunned():
-	return stun_type != Enums.StunType.NONE
-
-# Set the stun type and time.
-func set_timed_stun(stun_time: int) -> int:
-	stun_type = Enums.StunType.STUN
-	self.set_meta("StunType", stun_type)
-	stun_time_left = stun_time
-	stun_flag += 1
-	return stun_flag
-
-func set_attacking_stun():
-	stun_type = Enums.StunType.ATTACKING
-	self.set_meta("StunType", stun_type)
-	var new_flag: int = stun_flag + 1
-	stun_flag = new_flag
-	return func():
-		if stun_flag == new_flag:
-			stun_type = Enums.StunType.NONE
-
-func _process_stun_logic():
-	# Handle the stun logic.
-	if stun_type != Enums.StunType.STUN:
-		return
-	stun_time_left = max(0, stun_time_left - 1)
-	if stun_time_left == 0:
-		stun_type = Enums.StunType.NONE
-		stun_flag += 1
-		self.set_meta("StunType", stun_type)
 
 # Gets random damage between 1 and 6. (Might change to give higher chances with hit streaks i dont know)
 func _get_random_damage() -> int:
@@ -106,9 +72,9 @@ func _process_movement_meta():
 # Process the attacking logic.
 func _process_attacking():
 	# Could use a FSM here but I don't want to overcomplicate things.
-	if is_stunned() or attacking_debounce:
+	if %Stun.is_stunned() or attacking_debounce:
 		return
-	var reset_stun = set_attacking_stun()
+	var reset_stun = %Stun.set_attacking_stun()
 	var damage = _get_random_damage()
 	var attack_function = _get_attack_function("enemy", damage)
 	# The entirety of this is cursed please ignore
@@ -123,7 +89,7 @@ func _process_attacking():
 
 func _process(_delta):
 	_process_movement_meta()
-	_process_stun_logic()
+	%Stun.process_stun_logic()
 	if Input.is_action_pressed("ui_attack"):
 		_process_attacking()
 
@@ -133,20 +99,20 @@ func set_standing_collision(value): # toggle between standing and sliding collis
 
 func _physics_process(delta):
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not is_stunned():
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not %Stun.is_stunned():
 		velocity.y = JUMP_VELOCITY
 
-	if( Input.is_action_just_pressed("ui_down") and not is_stunned() ):
+	if (Input.is_action_just_pressed("ui_down") and not %Stun.is_stunned()):
 		if ((%AnimatedSprite2D.flip_h)):
 			velocity.x = SLIDING_SPEED * -1
 		else:
 			velocity.x = SLIDING_SPEED
-		
-	if Input.is_action_pressed("ui_down") and not is_stunned():
+
+	if Input.is_action_pressed("ui_down") and not %Stun.is_stunned():
 		#keep sliding as long as button is held
 		#momentum is locked here
 		movement_state = Enums.MovementState.SLIDE
-		velocity.x = move_toward(velocity.x, 0, DECEL_RATE/3)
+		velocity.x = move_toward(velocity.x, 0, DECEL_RATE / 3)
 
 		if (not is_on_floor()):
 			# Add the gravity.
@@ -159,7 +125,7 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction and not is_stunned(): # move in the directionsdadwsa
+	if direction and not %Stun.is_stunned(): # move in the directionsdadwsa
 		var hitbox_distance = abs(%Hitbox.position.x - %StandingCol.position.x)
 		if direction == 1:
 			%AnimatedSprite2D.flip_h = false
