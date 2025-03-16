@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://w728rpmp80xv"
-path="res://.godot/imported/PUNCH.png-8f1847fa16b71994d496d523cbd11abf.ctex"
+uid="uid://dfluwtfalo5cq"
+path="res://.godot/imported/Untitled_w_trans.png-0a0fcaafd3e83fe4446665b9f604f04b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/PUNCH.png"
-dest_files=["res://.godot/imported/PUNCH.png-8f1847fa16b71994d496d523cbd11abf.ctex"]
+source_file="res://assets/backgrounds/Untitled_w_trans.png"
+dest_files=["res://.godot/imported/Untitled_w_trans.png-0a0fcaafd3e83fe4446665b9f604f04b.ctex"]
 
 [params]
 
