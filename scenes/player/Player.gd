@@ -6,12 +6,16 @@ const BASE_ANIMATION_SPEED: int = 2
 const JUMP_VELOCITY = -400.0
 const DECEL_RATE = 15.0
 var direction : float
-enum {IDLE, RUN, JUMP, SKID, SLIDE}
+enum {IDLE, RUN, JUMP, SKID, SLIDE, HURT}
 const SLIDING_SPEED = SPEED + 50
+
+var current_score = 0
 
 var movement_state: int = IDLE
 
 func _process(_delta):
+	current_score += 1
+	
 	match movement_state:
 		IDLE:
 			%AnimatedSprite2D.play("idle")
@@ -29,6 +33,9 @@ func _process(_delta):
 		SLIDE:
 			%AnimatedSprite2D.play("slide")
 			set_standing_collision(false)
+		HURT:
+			%AnimatedSprite2D.play("hurt")
+			set_standing_collision(true);
 
 func set_standing_collision( value ): # toggle between standing and sliding collision
 	$StandingCol.set_disabled(value)
@@ -78,3 +85,11 @@ func _physics_process(delta):
 		velocity += get_gravity() * delta
 
 	move_and_slide()
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if( collision.get_collider().name == "enemynamegoeshere"):
+			#todo: deal damage
+			movement_state = HURT
+
+func get_score() -> int:
+	return current_score

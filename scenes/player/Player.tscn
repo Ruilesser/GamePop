@@ -223,12 +223,12 @@ animations = [{
 script = ExtResource("1_mqkvw")
 
 [node name="SlidingCol" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, 6.5)
 shape = SubResource("RectangleShape2D_1ghtk")
 disabled = true
 
 [node name="StandingCol" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(2.5, 3)
 shape = SubResource("RectangleShape2D_1ghtk")
 
