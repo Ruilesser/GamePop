@@ -6,7 +6,7 @@ const BASE_ANIMATION_SPEED: int = 2
 const JUMP_VELOCITY = -400.0
 const DECEL_RATE = 15.0
 const DICE_ROLL_TIME = 0.2
-const DICE_DISPLAY_TIME = 0.5
+const DICE_DISPLAY_TIME = 0.6
 
 var movement_state: int = Enums.MovementState.IDLE
 
