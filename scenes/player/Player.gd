@@ -5,7 +5,7 @@ const SPEED = 300.0
 const BASE_ANIMATION_SPEED: int = 2
 const JUMP_VELOCITY = -400.0
 const DECEL_RATE = 15.0
-
+var direction : float
 enum {IDLE, RUN, JUMP, SKID, SLIDE}
 
 var movement_state: int = IDLE
@@ -47,7 +47,7 @@ func _physics_process(delta):
 			
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
-		var direction = Input.get_axis("ui_left", "ui_right")
+		direction = Input.get_axis("ui_left", "ui_right")
 		if direction:#move in the directionsdadwsa
 			if direction == 1:
 				%AnimatedSprite2D.flip_h = false

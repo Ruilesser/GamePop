@@ -16,13 +16,14 @@ func _process(delta: float) -> void:
 	if (player):
 		player_node = get_node(player)
 	var delta_position = global_position.x -player_node.global_position.x
-	print(player_node.movement_state)
-	if (300>=abs(delta_position) and abs(delta_position) >= 150):
-		global_position.x -= (delta_position + 300)/30
-	elif (abs(delta_position)>300):
-		global_position.x = player_node.global_position.x - 300
-	if (player_node.movement_state == 3):
-		print("yooo")
-		global_position.x -= (delta_position + 100)/30
-		
+	if (200>abs(delta_position) and abs(delta_position) >= 150):
+		global_position.x += (abs(delta_position) - 200)/30 * sign(player_node.velocity.x)
+		print("middle left/right")
+	elif (abs(delta_position)>200):
+		global_position.x = player_node.global_position.x - 200* sign(player_node.velocity.x)
+		print("edge")
+	if (player_node.movement_state == 0 and abs(delta_position) >= 100):
+		print(player_node.direction)
+		global_position.x = move_toward(global_position.x,player_node.global_position.x - 100,5)
+		print("not moving")
 	
