@@ -8,6 +8,10 @@ const DECEL_RATE = 15.0
 const DICE_ROLL_TIME = 0.15
 const DICE_DISPLAY_TIME = 0.55
 
+@export var HealthPath: NodePath
+
+@onready var Health = get_node(HealthPath)
+
 var movement_state: int = Enums.MovementState.IDLE
 
 var stun_type: int = Enums.StunType.NONE
@@ -140,3 +144,6 @@ func _physics_process(delta):
 
 	self.set_meta("MovementState", movement_state)
 	move_and_slide()
+
+func get_health_controller():
+	return Health
