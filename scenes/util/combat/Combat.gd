@@ -1,5 +1,7 @@
 extends Node2D
 
+const DEFAULT_STUN_TIME: float = 0.2
+
 @onready var hit_effect_scene = preload("res://scenes/FX/Hit_Effect.tscn")
 @onready var enemy_death_effect = preload("res://scenes/FX/enemy_death_particles.tscn")
 @onready var player_death_effect = preload("res://scenes/FX/player_death_particles.tscn")
@@ -23,6 +25,7 @@ func _enemy_is_dead(enemy):
 # Attack the enemy
 func _attack_enemy(enemy, damage: int):
 	enemy.get_health_controller().take_damage(damage)
+	enemy.get_stun_controller().set_timed_stun(DEFAULT_STUN_TIME)
 	call_deferred("_play_hurt_animation", enemy)
 	spawn_effect(enemy.global_position, hit_effect_scene)
 	if enemy.get_health_controller().is_dead():
