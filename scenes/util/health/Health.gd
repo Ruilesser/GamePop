@@ -2,7 +2,7 @@ extends Node2D
 # This assumes that the parent has a AnimatedSprite2D node named "AnimatedSprite2D".
 
 @export var MaxHealth: int = 100
-var current_health: int = MaxHealth
+var current_health: int = 70
 @export var hp_bar: NodePath
 var hp_bar_script
 # Play the hurt animation.
