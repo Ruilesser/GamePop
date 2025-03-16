@@ -88,6 +88,8 @@ func _get_attack_function(group: String, damage: int):
 
 # Process the movement state and animations
 func _process_movement_meta():
+	current_score += 1
+
 	match movement_state:
 			Enums.MovementState.IDLE:
 				set_standing_collision(true);

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://kgt10j0whp7a"
+path="res://.godot/imported/Click_13.wav-b60051420d390ef2f8f96d214bc11bf4.sample"
+
+[deps]
+
+source_file="res://sfx/HALFTONE SFX Pack LITE by VOID1 Gaming/UI/2. Clicks/Click_13.wav"
+dest_files=["res://.godot/imported/Click_13.wav-b60051420d390ef2f8f96d214bc11bf4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

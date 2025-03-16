@@ -1,6 +1,6 @@
 extends Label
 
-var current_score = 0
+@onready var player: CharacterBody2D = $"../../Player"
 
 # Called when the node eznters the scene tree for the first time.
 func _ready() -> void:
@@ -11,6 +11,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	current_score += 1
-	set_text(("Score: %d" % current_score ))
-	
+	if(player):
+		set_text(("Score: %d" % player.get_score() ))

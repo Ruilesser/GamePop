@@ -363,13 +363,13 @@ metadata/MovementState = 0
 metadata/StunType = 0
 
 [node name="SlidingCol" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, 6.5)
 shape = SubResource("RectangleShape2D_1ghtk")
 disabled = true
 
 [node name="StandingCol" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
-visible = false
 position = Vector2(2.5, 3)
 shape = SubResource("RectangleShape2D_1ghtk")
 

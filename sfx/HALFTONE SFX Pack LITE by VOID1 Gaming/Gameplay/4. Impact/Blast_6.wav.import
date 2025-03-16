@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dpf6nv74gxyav"
+path="res://.godot/imported/Blast_6.wav-f6b2b37917b253d1bbe90b5d11b6b75b.sample"
+
+[deps]
+
+source_file="res://sfx/HALFTONE SFX Pack LITE by VOID1 Gaming/Gameplay/4. Impact/Blast_6.wav"
+dest_files=["res://.godot/imported/Blast_6.wav-f6b2b37917b253d1bbe90b5d11b6b75b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

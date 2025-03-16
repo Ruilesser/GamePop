@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bk53qbl7g3h3l"
+path="res://.godot/imported/Steps_1.wav-62d821922c5a7c18599aa6e7e1c10c7a.sample"
+
+[deps]
+
+source_file="res://sfx/HALFTONE SFX Pack LITE by VOID1 Gaming/Gameplay/3. Movement/Steps_1.wav"
+dest_files=["res://.godot/imported/Steps_1.wav-62d821922c5a7c18599aa6e7e1c10c7a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

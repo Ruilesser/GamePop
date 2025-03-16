@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bt0rna1h0kkc3"
+path="res://.godot/imported/Powerup_9.wav-76f880a735ddfe3e8f871ee6d2ae417b.sample"
+
+[deps]
+
+source_file="res://sfx/HALFTONE SFX Pack LITE by VOID1 Gaming/Gameplay/6. Bullets & Powerups/Powerup_9.wav"
+dest_files=["res://.godot/imported/Powerup_9.wav-76f880a735ddfe3e8f871ee6d2ae417b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
