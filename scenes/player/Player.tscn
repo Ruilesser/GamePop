@@ -360,6 +360,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_mqkvw")
 HealthPath = NodePath("Health")
+StunPath = NodePath("Stun")
 metadata/MovementState = 0
 metadata/StunType = 0
 

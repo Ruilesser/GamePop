@@ -10,8 +10,10 @@ const DICE_DISPLAY_TIME = 0.55
 const SLIDING_SPEED = SPEED + 100
 
 @export var HealthPath: NodePath
+@export var StunPath: NodePath
 
 @onready var Health = get_node(HealthPath)
+@onready var Stun = get_node(StunPath)
 
 var movement_state: int = Enums.MovementState.IDLE
 
@@ -157,6 +159,9 @@ func _physics_process(delta):
 
 func get_health_controller():
 	return Health
+
+func get_stun_controller():
+	return Stun
 
 func get_score() -> int:
 	return current_score
