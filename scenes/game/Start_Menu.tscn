@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=3 uid="uid://yfdab0yowhhh"]
+
+[ext_resource type="Script" path="res://scenes/game/Start_Button.gd" id="1_vc1sg"]
+[ext_resource type="Script" path="res://scenes/game/Rules_Menu_button.gd" id="1_xksma"]
+[ext_resource type="Texture2D" uid="uid://cihu3qwi3nwtr" path="res://assets/backgrounds/full_moon.png" id="2_rdxd0"]
+
+[sub_resource type="Shortcut" id="Shortcut_fxhpf"]
+
+[node name="StartMenu" type="Node2D"]
+
+[node name="settings button" type="Button" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = 64.0
+offset_right = 48.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(47.5, 15.5)
+text = "Settings
+"
+clip_text = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("1_xksma")
+
+[node name="rules button" type="Button" parent="."]
+z_index = 2
+z_as_relative = false
+offset_left = -47.0
+offset_top = 25.0
+offset_right = 48.0
+offset_bottom = 56.0
+pivot_offset = Vector2(47.5, 15.5)
+text = "Rules"
+clip_text = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("1_xksma")
+
+[node name="rules image" type="TextureRect" parent="rules button"]
+visible = false
+top_level = true
+z_index = 1
+z_as_relative = false
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.5
+anchor_top = -0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_rdxd0")
+metadata/_edit_use_anchors_ = true
+
+[node name="start button" type="Button" parent="rules button"]
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -623.0
+offset_top = -339.0
+offset_right = -528.0
+offset_bottom = -308.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(47.5, 15.5)
+size_flags_horizontal = 4
+shortcut = SubResource("Shortcut_fxhpf")
+text = "Play Game!"
+clip_text = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("1_vc1sg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
