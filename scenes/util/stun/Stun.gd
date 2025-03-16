@@ -2,14 +2,14 @@ extends Node2D
 
 var stun_type: int = Enums.StunType.NONE
 var stun_flag: int = 0
-var stun_time_left: int = 0
+var stun_time_left: float = 0
 
 # Check if the player is stunned.
 func is_stunned():
 	return stun_type != Enums.StunType.NONE
 
 # Set the stun type and time.
-func set_timed_stun(stun_time: int) -> int:
+func set_timed_stun(stun_time: float) -> int:
 	stun_type = Enums.StunType.STUN
 	self.set_meta("StunType", stun_type)
 	stun_time_left = stun_time
@@ -25,7 +25,7 @@ func set_attacking_stun():
 		if stun_flag == new_flag:
 			stun_type = Enums.StunType.NONE
 
-func process_stun_logic(delta: int):
+func process_stun_logic(delta: float):
 	# Handle the stun logic.
 	if stun_type != Enums.StunType.STUN:
 		return
