@@ -85,7 +85,7 @@ func _physics_process(delta):
 		velocity += get_gravity() * delta
 
 	move_and_slide()
-	for i in get_slide_collision_count():
+	for i in get_slide_collision_count(): #check if player was hit by enemy
 		var collision = get_slide_collision(i)
 		if( collision.get_collider().name == "enemynamegoeshere"):
 			#todo: deal damage

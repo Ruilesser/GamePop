@@ -368,11 +368,12 @@ tile_map_data = PackedByteArray("AAASABIAAQABAAAAAAATABIAAQABAAAAAAAUABIAAQABAAA
 tile_set = SubResource("TileSet_7ve3i")
 
 [node name="Score" type="Label" parent="Camera2D"]
-offset_left = 111.0
+offset_left = -18.0
 offset_top = -101.0
 offset_right = 159.0
 offset_bottom = -78.0
 text = "Score:"
+horizontal_alignment = 2
 script = ExtResource("8_m2yxu")
 
 [node name="Player" parent="." instance=ExtResource("3_c4gvi")]
