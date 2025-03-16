@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://c1lc0wpvh7axe"]
+[gd_scene load_steps=39 format=3 uid="uid://c1lc0wpvh7axe"]
 
 [ext_resource type="Script" path="res://scenes/enemies/basic/BasicEnemy.gd" id="1_5wklg"]
 [ext_resource type="Texture2D" uid="uid://d1vabf4g8q5qe" path="res://assets/sprites/enemies/basicenemy/Enemy_Hurt-Sheet.png" id="1_p1ldt"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b3ee5e1p0me2p" path="res://assets/sprites/enemies/basicenemy/Enemy_Run-Sheet.png" id="6_isufr"]
 [ext_resource type="Script" path="res://scenes/player/Animator.gd" id="8_7ltfd"]
 [ext_resource type="PackedScene" uid="uid://dfleewerb4fl" path="res://scenes/util/health/Health.tscn" id="9_bh47x"]
+[ext_resource type="PackedScene" uid="uid://cntal7mo8v4s7" path="res://scenes/util/stun/Stun.tscn" id="10_5nl6t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ux3lp"]
 size = Vector2(21, 24)
@@ -243,4 +244,8 @@ animation = &"idle"
 script = ExtResource("8_7ltfd")
 
 [node name="Health" parent="." instance=ExtResource("9_bh47x")]
+unique_name_in_owner = true
 MaxHealth = 15
+
+[node name="Stun" parent="." instance=ExtResource("10_5nl6t")]
+unique_name_in_owner = true
