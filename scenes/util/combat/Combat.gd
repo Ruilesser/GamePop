@@ -1,6 +1,6 @@
 extends Node2D
 
-const DEFAULT_STUN_TIME: float = 0.2
+const DEFAULT_STUN_TIME: float = 0.225
 
 @onready var hit_effect_scene = preload("res://scenes/FX/Hit_Effect.tscn")
 @onready var enemy_death_effect = preload("res://scenes/FX/enemy_death_particles.tscn")
