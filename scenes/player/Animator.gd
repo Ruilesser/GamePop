@@ -10,9 +10,12 @@ func _ready():
 
 # Play the animation based on the movement state.
 func play_movement_animation(movement_state: int):
-	if old_movement_state == movement_state:
+	if (old_movement_state == movement_state or get_parent().is_stunned()):
 		return
 	old_movement_state = movement_state
+	match_movement_animation_on_state(movement_state)
+
+func match_movement_animation_on_state(movement_state: int):
 	match movement_state:
 		Enums.MovementState.IDLE:
 			%AnimatedSprite2D.play("idle")
