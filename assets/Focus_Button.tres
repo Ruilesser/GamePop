@@ -1,0 +1,9 @@
+[gd_resource type="StyleBoxFlat" format=3 uid="uid://fappheyylone"]
+
+[resource]
+bg_color = Color(0.726342, 0.442775, 0, 0.623529)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.453124, 0.0342087, 7.21961e-08, 1)

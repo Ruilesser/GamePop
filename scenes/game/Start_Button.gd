@@ -7,6 +7,7 @@ func _ready():
 	var button = self
 	button.pressed.connect(_button_pressed)
 	add_child(button)
+	button.grab_focus()
 
 func _button_pressed():
 	get_tree().change_scene_to_file("res://scenes/game/Game.tscn")
