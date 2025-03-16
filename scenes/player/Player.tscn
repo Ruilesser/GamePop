@@ -353,7 +353,6 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(2, 2)
 script = ExtResource("1_mqkvw")
 metadata/MovementState = 0
 metadata/StunType = 0
