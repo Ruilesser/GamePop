@@ -15,6 +15,10 @@ run/main_scene="res://scenes/game/Start_Menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Enums="*res://scenes/shared/Enums.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"
