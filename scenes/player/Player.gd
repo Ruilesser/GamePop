@@ -7,7 +7,7 @@ const JUMP_VELOCITY = -400.0
 const DECEL_RATE = 15.0
 const DICE_ROLL_TIME = 0.15
 const DICE_DISPLAY_TIME = 0.55
-const SLIDING_SPEED = SPEED + 50
+const SLIDING_SPEED = SPEED + 100
 
 @export var HealthPath: NodePath
 
@@ -136,14 +136,18 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not is_stunned():
 		velocity.y = JUMP_VELOCITY
 
+	if( Input.is_action_just_pressed("ui_down") and not is_stunned() ):
+		if ((%AnimatedSprite2D.flip_h)):
+			velocity.x = SLIDING_SPEED * -1
+		else:
+			velocity.x = SLIDING_SPEED
+		
 	if Input.is_action_pressed("ui_down") and not is_stunned():
 		#keep sliding as long as button is held
 		#momentum is locked here
 		movement_state = Enums.MovementState.SLIDE
-		if ((%AnimatedSprite2D.flip_h)):
-			velocity.x = move_toward(velocity.x, SLIDING_SPEED * -1, DECEL_RATE)
-		else:
-			velocity.x = move_toward(velocity.x, SLIDING_SPEED, DECEL_RATE)
+		velocity.x = move_toward(velocity.x, 0, DECEL_RATE/3)
+
 		if (not is_on_floor()):
 			# Add the gravity.
 			velocity += get_gravity() * delta
