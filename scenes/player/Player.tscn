@@ -390,7 +390,7 @@ position = Vector2(0, -29)
 sprite_frames = SubResource("SpriteFrames_cmsrf")
 animation = &"roll"
 
-[node name="Hitbox" parent="." instance=ExtResource("11_fjy2l")]
+[node name="Hitbox" parent="." groups=["player"] instance=ExtResource("11_fjy2l")]
 unique_name_in_owner = true
 position = Vector2(19, 3)
 

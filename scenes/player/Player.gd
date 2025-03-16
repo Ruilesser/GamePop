@@ -19,6 +19,10 @@ var movement_state: int = Enums.MovementState.IDLE
 var attacking_debounce: bool = false
 var current_score: int = 0
 
+func _ready():
+	add_to_group("player")
+	%AnimatedSprite2D.play("idle")
+
 # Gets random damage between 1 and 6. (Might change to give higher chances with hit streaks i dont know)
 func _get_random_damage() -> int:
 	return randi_range(1, 6)
@@ -59,7 +63,7 @@ func _process_attacking():
 		return
 	var damage: int = _get_random_damage()
 	call_deferred("_play_dice_animation", damage)
-	%Combat.process_attacking(damage)
+	%Combat.process_attacking(damage, "enemy")
 
 func _process(_delta):
 	_process_movement_meta()
