@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cihu3qwi3nwtr" path="res://assets/backgrounds/full_moon.png" id="3_su3p8"]
 [ext_resource type="StyleBox" path="res://assets/Focus_Button.tres" id="4_ibg8l"]
 [ext_resource type="Script" path="res://scenes/game/Start_Button.gd" id="4_kp1sx"]
-[ext_resource type="StyleBox" uid="uid://np80di4imgqw" path="res://assets/Hover_Button.tres" id="5_4n286"]
-[ext_resource type="StyleBox" uid="uid://bnqq1gd6jmdas" path="res://assets/button_style_box.tres" id="6_kr8om"]
+[ext_resource type="StyleBox" path="res://assets/Hover_Button.tres" id="5_4n286"]
+[ext_resource type="StyleBox" path="res://assets/button_style_box.tres" id="6_kr8om"]
 [ext_resource type="Script" path="res://scenes/game/return_to_main_button.gd" id="7_vg6a6"]
 
 [sub_resource type="Shortcut" id="Shortcut_fxhpf"]
