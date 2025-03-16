@@ -1,20 +1,22 @@
 extends Node2D
 # This assumes that the parent has a AnimatedSprite2D node named "AnimatedSprite2D".
 
-@export var MaxHealth: int = 100
-var current_health: int = MaxHealth
+@export var MaxHealth: int
+var current_health: int
 
 @export var hp_bar: NodePath
 var hp_bar_script
 
 # Play the hurt animation.
 func _ready() -> void:
+	current_health = MaxHealth
 	if (hp_bar):
 		hp_bar_script = get_node(hp_bar)
 
 # Take damage from the player.
 func take_damage(damage: int) -> int:
 	current_health = max(0, current_health - damage)
+	print("Health: ", current_health)
 	return current_health
 
 # Heal the player.
