@@ -22,6 +22,7 @@ Enums="*res://scenes/shared/Enums.gd"
 [display]
 
 window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [dotnet]
 

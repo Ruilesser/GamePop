@@ -1,13 +1,13 @@
-[gd_scene load_steps=11 format=4 uid="uid://wl11sgkxst1s"]
+[gd_scene load_steps=13 format=4 uid="uid://wl11sgkxst1s"]
 
 [ext_resource type="Texture2D" uid="uid://l775mx6sdw0l" path="res://assets/tilesets/Tile_set.png" id="2_kvqbu"]
 [ext_resource type="PackedScene" uid="uid://dud8oki321fc6" path="res://scenes/player/Player.tscn" id="3_c4gvi"]
 [ext_resource type="Script" path="res://scenes/game/player_follow.gd" id="3_u4hmd"]
+[ext_resource type="Texture2D" uid="uid://dr58njsk2es7u" path="res://assets/tilesets/06 (1).png" id="3_x54ov"]
+[ext_resource type="Script" path="res://scenes/game/Show_hp.gd" id="4_anpce"]
 [ext_resource type="Texture2D" uid="uid://bvcgw644gve8g" path="res://assets/backgrounds/Parallax_1.png" id="5_qk776"]
 [ext_resource type="Texture2D" uid="uid://cpuvlwwr7a7vs" path="res://assets/backgrounds/Parallax_2.png" id="6_wriqj"]
 [ext_resource type="Texture2D" uid="uid://cw5e86se5b55a" path="res://assets/backgrounds/BG.png" id="7_6axsi"]
-[ext_resource type="PackedScene" uid="uid://c1lc0wpvh7axe" path="res://scenes/enemies/basic/BasicEnemy.tscn" id="7_horas"]
-[ext_resource type="Script" path="res://scenes/game/score.gd" id="8_m2yxu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kwctc"]
 texture = ExtResource("2_kvqbu")
@@ -355,6 +355,22 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_kwctc")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5ofp4"]
+texture = ExtResource("3_x54ov")
+separation = Vector2i(2, 0)
+texture_region_size = Vector2i(6, 10)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_4mvh5"]
+tile_size = Vector2i(6, 10)
+sources/0 = SubResource("TileSetAtlasSource_5ofp4")
+
 [node name="Game" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -368,50 +384,50 @@ position = Vector2(-574, -500)
 tile_map_data = PackedByteArray("AAASABIAAQABAAAAAAATABIAAQABAAAAAAAUABIAAQABAAAAAAAVABIAAQABAAAAAAAjABQAAQAAAAQAAAAiABQAAQAAAAQAAAAhABQAAQAAAAQAAAAgABQAAQAAAAQAAAAfABQAAQAAAAQAAAAeABQAAQAAAAQAAAAdABQAAQAAAAQAAAAcABQAAQAAAAQAAAAbABQAAQAAAAQAAAAaABQAAQAAAAQAAAAZABQAAQAAAAQAAAAYABQAAQAAAAQAAAAXABQAAQAAAAQAAAAWABQAAQAAAAQAAAAVABQAAQAAAAQAAAAUABQAAQAAAAQAAAATABQAAQAAAAQAAAASABQAAQAAAAQAAAARABQAAQAAAAQAAAAQABQAAQAAAAQAAAAPABQAAQAAAAQAAAAOABQAAQAAAAQAAAANABQAAQAAAAQAAAAHABQAAQAAAAQAAAAGABQAAQAAAAQAAAAFABQAAQAAAAQAAAAEABQAAQAAAAQAAAADABQAAQAAAAQAAAACABQAAQAAAAQAAAABABQAAQAAAAQAAAAAABIAAQAAAAAAAAABABIAAQABAAAAAAACABIAAQABAAAAAAADABIAAQABAAAAAAAEABIAAQABAAAAAAAFABIAAQABAAAAAAAGABIAAQABAAAAAAAHABIAAQABAAAAAAAIABIAAQABAAAAAAAJABIAAQABAAAAAAAKABIAAQABAAAAAAALABIAAQABAAAAAAAMABIAAQABAAAAAAANABIAAQABAAAAAAAOABIAAQABAAAAAAAPABIAAQABAAAAAAAQABIAAQABAAAAAAARABIAAQABAAAAAAAWABIAAQABAAAAAAAXABIAAQABAAAAAAAYABIAAQABAAAAAAAZABIAAQABAAAAAAAaABIAAQABAAAAAAAbABIAAQABAAAAAAAcABIAAQABAAAAAAAdABIAAQABAAAAAAAeABIAAQABAAAAAAAfABIAAQABAAAAAAAgABIAAQABAAAAAAAhABIAAQABAAAAAAAiABIAAQABAAAAAAAjABIAAQABAAAAAAAkABIAAQACAAAAAAAlABIAAQACAAAAAAAmABIAAQACAAAAAAAnABIAAQACAAAAAAAoABIAAQACAAAAAAApABIAAQACAAAAAAAqABIAAQACAAAAAAArABIAAQACAAAAAAAsABIAAQACAAAAAAAtABIAAQACAAAAAAAuABIAAQACAAAAAAD//xIAAQAAAAAAAAD+/xIAAQAAAAAAAAD9/xIAAQAAAAAAAAD8/xIAAQAAAAAAAAD7/xIAAQAAAAAAAAD6/xIAAQAAAAAAAAD5/xIAAQAAAAAAAAD4/xIAAQAAAAAAAAD3/xIAAQAAAAAAAAD2/xIAAQAAAAAAAAD1/xIAAQAAAAAAAAD0/xIAAQAAAAAAAADz/xIAAQAAAAAAAADy/xIAAQAAAAAAAADx/xIAAQAAAAAAAADw/xIAAQAAAAAAAADv/xIAAQAAAAAAAADu/xIAAQAAAAAAAADt/xIAAQAAAAAAAADs/xIAAQAAAAAAAADr/xIAAQAAAAAAAADq/xIAAQAAAAAAAADp/xIAAQAAAAAAAADo/xIAAQAAAAAAAADn/xIAAQAAAAAAAADm/xIAAQAAAAAAAADl/xIAAQAAAAAAAADk/xIAAQAAAAAAAADj/xIAAQAAAAAAAADi/xIAAQAAAAAAAADh/xIAAQAAAAAAAADg/xIAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_7ve3i")
 
-[node name="Score" type="Label" parent="Camera2D"]
-offset_left = 111.0
-offset_top = -101.0
-offset_right = 159.0
-offset_bottom = -78.0
-text = "Score:"
-script = ExtResource("8_m2yxu")
+[node name="TileMapLayer2" type="TileMapLayer" parent="Camera2D"]
+position = Vector2(-576, -323)
+tile_map_data = PackedByteArray("AABBABYAAAAAAAAAAABCABYAAAABAAAAAABDABYAAAABAAAAAABEABYAAAABAAAAAABFABYAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_4mvh5")
+script = ExtResource("4_anpce")
+player = NodePath("../../Player/Health")
 
 [node name="Player" parent="." instance=ExtResource("3_c4gvi")]
 position = Vector2(64, 71)
 
-[node name="Node" type="Node" parent="."]
+[node name="Health" parent="Player" index="5"]
+hp_bar = NodePath("../../Camera2D/TileMapLayer2")
 
-[node name="Parallax2D" type="Parallax2D" parent="Node"]
+[node name="parallax" type="Node" parent="."]
+
+[node name="Parallax2D" type="Parallax2D" parent="parallax"]
 z_index = -1
 scroll_scale = Vector2(1, 0)
 scroll_offset = Vector2(0, 383)
 repeat_size = Vector2(1728, 0)
 
-[node name="top layer" type="Sprite2D" parent="Node/Parallax2D"]
+[node name="top layer" type="Sprite2D" parent="parallax/Parallax2D"]
 texture = ExtResource("5_qk776")
 
-[node name="Parallax2D2" type="Parallax2D" parent="Node"]
+[node name="Parallax2D2" type="Parallax2D" parent="parallax"]
 z_index = -2
 scroll_scale = Vector2(0.1, 0)
 scroll_offset = Vector2(0, 343)
 repeat_size = Vector2(1536, 0)
 
-[node name="middle layer" type="Sprite2D" parent="Node/Parallax2D2"]
+[node name="middle layer" type="Sprite2D" parent="parallax/Parallax2D2"]
 texture = ExtResource("6_wriqj")
 
-[node name="Parallax2D3" type="Parallax2D" parent="Node"]
+[node name="Parallax2D3" type="Parallax2D" parent="parallax"]
 z_index = -3
 scale = Vector2(1.5, 1.5)
 scroll_scale = Vector2(0, 0)
 scroll_offset = Vector2(-200, 421)
 repeat_size = Vector2(320, 0)
 
-[node name="botom" type="Sprite2D" parent="Node/Parallax2D3"]
+[node name="botom" type="Sprite2D" parent="parallax/Parallax2D3"]
 position = Vector2(517.333, -57.3333)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("7_6axsi")
 
-[node name="Enemies" type="Node" parent="."]
-
-[node name="BasicEnemy" parent="Enemies" instance=ExtResource("7_horas")]
-position = Vector2(549, 170)
+[editable path="Player"]
+[editable path="Player/Hitbox"]
