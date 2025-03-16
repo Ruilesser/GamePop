@@ -5,6 +5,8 @@ const SPEED = 300.0
 const BASE_ANIMATION_SPEED: int = 2
 const JUMP_VELOCITY = -400.0
 const DECEL_RATE = 15.0
+const DICE_ROLL_TIME = 0.2
+const DICE_DISPLAY_TIME = 0.5
 
 var movement_state: int = Enums.MovementState.IDLE
 
@@ -13,6 +15,7 @@ var stun_flag: int = 0
 var stun_time_left: int = 0
 
 var combo_number: int = 0
+var attacking_debounce: bool = false
 var max_combo: int = 2
 
 # Check if the player is stunned.
@@ -46,6 +49,22 @@ func _process_stun_logic():
 		stun_flag += 1
 		self.set_meta("StunType", stun_type)
 
+# Gets random damage between 1 and 6. (Might change to give higher chances with hit streaks i dont know)
+func _get_random_damage() -> int:
+	return randi_range(1, 6)
+
+func _play_dice_animation(result: int):
+	attacking_debounce = true
+	%DiceRollAnimator.visible = true
+	%DiceRollAnimator.play("roll")
+	await get_tree().create_timer(DICE_ROLL_TIME).timeout
+	%DiceRollAnimator.play("result")
+	%DiceRollAnimator.stop()
+	$DiceRollAnimator.frame = result - 1
+	await get_tree().create_timer(DICE_DISPLAY_TIME).timeout
+	%DiceRollAnimator.visible = false
+	attacking_debounce = false
+
 # Process the movement state and animations
 func _process_movement_meta():
 	match movement_state:
@@ -64,13 +83,15 @@ func _process_movement_meta():
 # Process the attacking logic.
 func _process_attacking():
 	# Could use a FSM here but I don't want to overcomplicate things.
-	if is_stunned():
+	if is_stunned() or attacking_debounce:
 		return
 	var reset_stun = set_attacking_stun()
 	%AnimatedSprite2D.play("punch%d" % (combo_number + 1))
-	combo_number = (combo_number + 1) % max_combo
+	var damage = _get_random_damage()
+	call_deferred("_play_dice_animation", damage)
 	await %AnimatedSprite2D.animation_finished
 	reset_stun.call()
+	combo_number = (combo_number + 1) % max_combo
 	%AnimatedSprite2D.match_movement_animation_on_state(movement_state)
 
 func _process(_delta):
