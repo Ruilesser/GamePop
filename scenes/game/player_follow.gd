@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var player : NodePath
+@export var player: NodePath
 var player_node
 var follow
 var hard_follow
@@ -12,15 +12,13 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if (player):
 		player_node = get_node(player)
-	var delta_position = global_position.x -player_node.global_position.x
-	if (66>abs(delta_position) and abs(delta_position) >= 50):
-		global_position.x += (abs(delta_position) - 66)/30 * sign(player_node.velocity.x)
-	elif (abs(delta_position)>66):
-		global_position.x = player_node.global_position.x - 66* sign(player_node.velocity.x)
+	var delta_position = global_position.x - player_node.global_position.x
+	if (66 > abs(delta_position) and abs(delta_position) >= 50):
+		global_position.x += (abs(delta_position) - 66) / 30 * sign(player_node.velocity.x)
+	elif (abs(delta_position) > 66):
+		global_position.x = player_node.global_position.x - 66 * sign(player_node.velocity.x)
 	if (player_node.movement_state == 0 and abs(delta_position) >= 33):
-		print(player_node.direction)
-		global_position.x = move_toward(global_position.x,player_node.global_position.x - 33,2)
-	
+		global_position.x = move_toward(global_position.x, player_node.global_position.x - 33, 2)

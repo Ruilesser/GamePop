@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://wl11sgkxst1s"]
+[gd_scene load_steps=11 format=4 uid="uid://wl11sgkxst1s"]
 
 [ext_resource type="Texture2D" uid="uid://l775mx6sdw0l" path="res://assets/tilesets/Tile_set.png" id="2_kvqbu"]
 [ext_resource type="PackedScene" uid="uid://dud8oki321fc6" path="res://scenes/player/Player.tscn" id="3_c4gvi"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bvcgw644gve8g" path="res://assets/backgrounds/Parallax_1.png" id="5_qk776"]
 [ext_resource type="Texture2D" uid="uid://cpuvlwwr7a7vs" path="res://assets/backgrounds/Parallax_2.png" id="6_wriqj"]
 [ext_resource type="Texture2D" uid="uid://cw5e86se5b55a" path="res://assets/backgrounds/BG.png" id="7_6axsi"]
+[ext_resource type="PackedScene" uid="uid://c1lc0wpvh7axe" path="res://scenes/enemies/basic/BasicEnemy.tscn" id="7_horas"]
 [ext_resource type="Script" path="res://scenes/game/score.gd" id="8_m2yxu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kwctc"]
@@ -368,12 +369,11 @@ tile_map_data = PackedByteArray("AAASABIAAQABAAAAAAATABIAAQABAAAAAAAUABIAAQABAAA
 tile_set = SubResource("TileSet_7ve3i")
 
 [node name="Score" type="Label" parent="Camera2D"]
-offset_left = -18.0
+offset_left = 111.0
 offset_top = -101.0
 offset_right = 159.0
 offset_bottom = -78.0
 text = "Score:"
-horizontal_alignment = 2
 script = ExtResource("8_m2yxu")
 
 [node name="Player" parent="." instance=ExtResource("3_c4gvi")]
@@ -410,3 +410,8 @@ repeat_size = Vector2(320, 0)
 position = Vector2(517.333, -57.3333)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("7_6axsi")
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="BasicEnemy" parent="Enemies" instance=ExtResource("7_horas")]
+position = Vector2(549, 170)
