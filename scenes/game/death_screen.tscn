@@ -1,32 +1,55 @@
-[gd_scene load_steps=6 format=3 uid="uid://wmihcl2jdkiw"]
+[gd_scene load_steps=11 format=3 uid="uid://wmihcl2jdkiw"]
 
 [ext_resource type="Script" path="res://scenes/game/Rules_Menu_button.gd" id="1_p6eum"]
+[ext_resource type="Texture2D" uid="uid://cw5e86se5b55a" path="res://assets/backgrounds/BG.png" id="1_ycpa0"]
 [ext_resource type="FontFile" uid="uid://cctbg6lhfjm4p" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_7gtqr"]
 [ext_resource type="Texture2D" uid="uid://cihu3qwi3nwtr" path="res://assets/backgrounds/full_moon.png" id="3_su3p8"]
+[ext_resource type="StyleBox" path="res://assets/Focus_Button.tres" id="4_ibg8l"]
 [ext_resource type="Script" path="res://scenes/game/Start_Button.gd" id="4_kp1sx"]
+[ext_resource type="StyleBox" uid="uid://np80di4imgqw" path="res://assets/Hover_Button.tres" id="5_4n286"]
+[ext_resource type="StyleBox" path="res://assets/button_style_box.tres" id="6_kr8om"]
+[ext_resource type="Script" path="res://scenes/game/return_to_main_button.gd" id="7_vg6a6"]
 
 [sub_resource type="Shortcut" id="Shortcut_fxhpf"]
 
-[node name="StartMenu" type="Node2D"]
+[node name="Death_Menu" type="Node2D"]
 
-[node name="TextEdit" type="RichTextLabel" parent="."]
-offset_left = -576.0
-offset_top = -324.0
-offset_right = 576.0
-offset_bottom = 324.0
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.840366, 0.667729, 0.663409, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -582.0
+offset_top = -325.0
+offset_right = 579.0
+offset_bottom = 397.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_ycpa0")
+
+[node name="TextEdit2" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.0
+offset_top = -236.0
+offset_right = 213.0
+offset_bottom = -83.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.361792, 0.121758, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_7gtqr")
 theme_override_font_sizes/bold_italics_font_size = 50
 theme_override_font_sizes/italics_font_size = 50
 theme_override_font_sizes/mono_font_size = 50
 theme_override_font_sizes/normal_font_size = 50
-text = "
-
-
-	
-	
-
-	YOU HAD TO ROLL 1 MORE
-	TIME FOR THE BIG WIN"
+text = "GAMBLED
+AND LOST"
 fit_content = true
 structured_text_bidi_override_options = [null]
 
@@ -52,7 +75,6 @@ expand_icon = true
 script = ExtResource("1_p6eum")
 
 [node name="rules button" type="Button" parent="."]
-visible = false
 z_index = 2
 z_as_relative = false
 offset_left = -512.0
@@ -60,13 +82,17 @@ offset_top = 127.0
 offset_right = 512.0
 offset_bottom = 192.0
 pivot_offset = Vector2(47.5, 15.5)
+theme_override_colors/font_color = Color(1, 0.894, 0.47, 1)
 theme_override_fonts/font = ExtResource("2_7gtqr")
 theme_override_font_sizes/font_size = 30
-text = "Rules"
+theme_override_styles/focus = ExtResource("4_ibg8l")
+theme_override_styles/hover = ExtResource("5_4n286")
+theme_override_styles/normal = ExtResource("6_kr8om")
+text = "Main Menu"
 clip_text = true
 icon_alignment = 1
 expand_icon = true
-script = ExtResource("1_p6eum")
+script = ExtResource("7_vg6a6")
 
 [node name="rules image" type="TextureRect" parent="rules button"]
 visible = false
@@ -102,10 +128,14 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(47.5, 15.5)
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.894, 0.47, 1)
 theme_override_fonts/font = ExtResource("2_7gtqr")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = ExtResource("4_ibg8l")
+theme_override_styles/hover = ExtResource("5_4n286")
+theme_override_styles/normal = ExtResource("6_kr8om")
 shortcut = SubResource("Shortcut_fxhpf")
-text = "Play Game!"
+text = "Play Again"
 clip_text = true
 icon_alignment = 1
 expand_icon = true
