@@ -232,6 +232,7 @@ animations = [{
 [node name="BasicEnemy" type="CharacterBody2D"]
 script = ExtResource("1_5wklg")
 HealthPath = NodePath("Health")
+StunPath = NodePath("Stun")
 
 [node name="StandingCol" type="CollisionShape2D" parent="."]
 position = Vector2(2.5, 3)

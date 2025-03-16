@@ -19,17 +19,16 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	if(player ):
-			
+	if (player and not %Stun.is_stunned()):
 		var distance = vec_to_player(player)
-		if(distance.length() > 27):
+		if (distance.length() > 27):
 			print(distance.length())
 			chase_player(player)
 		else:
-			velocity.x =0
-			
-		
-		if(velocity.x == 0):
+			velocity.x = 0
+
+
+		if (velocity.x == 0):
 			%AnimatedSprite2D.play("idle")
 		else:
 			%AnimatedSprite2D.flip_h = (velocity.x < 0)
@@ -41,15 +40,15 @@ func get_health_controller():
 
 func get_stun_controller():
 	return Stun
-	
+
 func chase_player(target):
 # unit vector going to the player
 	var dest = (player.global_position - global_position).normalized()
 
 	# move towards that vector
-		
+
 	velocity.x = dest.x * SPEED
-	# todo: 
+	# todo:
 
 func vec_to_player(target) -> Vector2:
 	return (target.global_position - global_position)
