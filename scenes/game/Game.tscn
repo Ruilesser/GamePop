@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://wl11sgkxst1s"]
+[gd_scene load_steps=9 format=4 uid="uid://wl11sgkxst1s"]
 
 [ext_resource type="Texture2D" uid="uid://cihu3qwi3nwtr" path="res://assets/backgrounds/full_moon.png" id="1_6lqnc"]
 [ext_resource type="Texture2D" uid="uid://bf2dmwth6kibw" path="res://assets/tilesets/TX Tileset Ground.png" id="2_jpc7x"]
 [ext_resource type="PackedScene" uid="uid://dud8oki321fc6" path="res://scenes/player/Player.tscn" id="3_c4gvi"]
 [ext_resource type="Script" path="res://scenes/game/player_follow.gd" id="3_u4hmd"]
+[ext_resource type="Texture2D" uid="uid://bm0a7ol2f3mm" path="res://assets/backgrounds/Untitled1.png" id="5_glk7o"]
+[ext_resource type="Texture2D" uid="uid://dfluwtfalo5cq" path="res://assets/backgrounds/Untitled_w_trans.png" id="6_3h6ys"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kwctc"]
 texture = ExtResource("2_jpc7x")
@@ -348,6 +350,8 @@ sources/1 = SubResource("TileSetAtlasSource_kwctc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 323)
+offset = Vector2(0, 150)
+zoom = Vector2(3, 3)
 script = ExtResource("3_u4hmd")
 player = NodePath("../Player")
 
@@ -357,6 +361,7 @@ tile_map_data = PackedByteArray("AAASABIAAQAAAAAAAAATABIAAQAAAAAAAAAUABIAAQAAAAA
 tile_set = SubResource("TileSet_7ve3i")
 
 [node name="TextureRect" type="TextureRect" parent="Camera2D"]
+visible = false
 z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
@@ -369,9 +374,27 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_6lqnc")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
-layer = -1
-follow_viewport_enabled = true
-
 [node name="Player" parent="." instance=ExtResource("3_c4gvi")]
 position = Vector2(64, 71)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Parallax2D" type="Parallax2D" parent="Node"]
+z_index = -2
+scroll_scale = Vector2(0.1, 0)
+scroll_offset = Vector2(576, 323)
+repeat_size = Vector2(1416, 0)
+autoscroll = Vector2(2, 0)
+
+[node name="bottom layer" type="Sprite2D" parent="Node/Parallax2D"]
+texture = ExtResource("5_glk7o")
+
+[node name="Parallax2D2" type="Parallax2D" parent="Node"]
+z_index = -2
+scroll_scale = Vector2(1, 0)
+scroll_offset = Vector2(576, 323)
+repeat_size = Vector2(1416, 0)
+autoscroll = Vector2(2, 0)
+
+[node name="top layer" type="Sprite2D" parent="Node/Parallax2D2"]
+texture = ExtResource("6_3h6ys")
