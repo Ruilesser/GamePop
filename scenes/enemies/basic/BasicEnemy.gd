@@ -26,12 +26,18 @@ func _physics_process(delta):
 			chase_player(player)
 		else:
 			velocity.x = 0
+			await %Combat.process_attacking(5, "player")
 
 
 		if (velocity.x == 0):
 			%AnimatedSprite2D.play("idle")
 		else:
+			var hitbox_distance = abs(%Hitbox.position.x - %StandingCol.position.x)
 			%AnimatedSprite2D.flip_h = (velocity.x < 0)
+			if (velocity.x > 0):
+				%Hitbox.position.x = %StandingCol.position.x + hitbox_distance
+			else:
+				%Hitbox.position.x = %StandingCol.position.x - hitbox_distance
 			%AnimatedSprite2D.play("run")
 	move_and_slide()
 
