@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://wmihcl2jdkiw"]
+[gd_scene load_steps=11 format=3 uid="uid://bxwnjxklcx7cc"]
 
 [ext_resource type="Script" path="res://scenes/game/Rules_Menu_button.gd" id="1_p6eum"]
 [ext_resource type="Texture2D" uid="uid://cw5e86se5b55a" path="res://assets/backgrounds/BG.png" id="1_ycpa0"]

@@ -1,15 +1,32 @@
 extends Node2D
 
 @onready var hit_effect_scene = preload("res://scenes/FX/Hit_Effect.tscn")
+@onready var enemy_death_effect = preload("res://scenes/FX/enemy_death_particles.tscn")
+@onready var player_death_effect = preload("res://scenes/FX/player_death_particles.tscn")
 
 @export var max_combo = 2
 var combo_number = 0
+
+# Destroy the enemy if they die
+func _enemy_is_dead(enemy):
+	if enemy.is_in_group("enemy"):
+		spawn_effect(enemy.global_position, enemy_death_effect)
+		enemy.queue_free()
+	else:
+		enemy.visible = false
+		enemy.get_stun_controller().set_attacking_stun()
+		spawn_effect(enemy.global_position, player_death_effect)
+		await get_tree().create_timer(1).timeout
+		get_tree().change_scene_to_file("res://scenes/game/death_screen.tscn")
+		enemy.queue_free()
 
 # Attack the enemy
 func _attack_enemy(enemy, damage: int):
 	enemy.get_health_controller().take_damage(damage)
 	call_deferred("_play_hurt_animation", enemy)
-	spawn_hit_effect(enemy.global_position)
+	spawn_effect(enemy.global_position, hit_effect_scene)
+	if enemy.get_health_controller().is_dead():
+		_enemy_is_dead(enemy)
 
 # Play the hurt animation.
 func _play_hurt_animation(enemy):
@@ -19,14 +36,14 @@ func _play_hurt_animation(enemy):
 	animator.play("idle")
 
 # When calling, make sure to put hit_position as the one who is taking damage
-func spawn_hit_effect(hit_position: Vector2):
+func spawn_effect(effect_position: Vector2, effect_scene):
 	# Change node to whatever works
-	var hit_effect = hit_effect_scene.instantiate()
+	var hit_effect = effect_scene.instantiate()
 
 	# Generate random position
 	var random_offset = Vector2(randf_range(-10, 10), randf_range(-10, 10))
 
-	hit_effect.global_position = hit_position + random_offset
+	hit_effect.global_position = effect_position + random_offset
 
 	if hit_effect is GPUParticles2D:
 		hit_effect.emitting = true
