@@ -25,12 +25,15 @@ func set_attacking_stun():
 		if stun_flag == new_flag:
 			stun_type = Enums.StunType.NONE
 
-func process_stun_logic():
+func process_stun_logic(delta: int):
 	# Handle the stun logic.
 	if stun_type != Enums.StunType.STUN:
 		return
-	stun_time_left = max(0, stun_time_left - 1)
+	stun_time_left = max(0, stun_time_left - delta)
 	if stun_time_left == 0:
 		stun_type = Enums.StunType.NONE
 		stun_flag += 1
 		self.set_meta("StunType", stun_type)
+
+func _process(delta):
+	process_stun_logic(delta)

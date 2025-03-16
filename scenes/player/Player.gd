@@ -63,7 +63,6 @@ func _process_attacking():
 
 func _process(_delta):
 	_process_movement_meta()
-	%Stun.process_stun_logic()
 	if Input.is_action_pressed("ui_attack"):
 		_process_attacking()
 
