@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dodcpak6xrcbm" path="res://assets/backgrounds/Menu.png" id="3_n5bxi"]
 [ext_resource type="StyleBox" path="res://assets/button_style_box.tres" id="4_kcwd6"]
 [ext_resource type="StyleBox" path="res://assets/Focus_Button.tres" id="4_yun7b"]
-[ext_resource type="StyleBox" path="res://assets/Hover_Button.tres" id="5_k4ajs"]
+[ext_resource type="StyleBox" uid="uid://np80di4imgqw" path="res://assets/Hover_Button.tres" id="5_k4ajs"]
 [ext_resource type="Texture2D" uid="uid://cw5e86se5b55a" path="res://assets/backgrounds/BG.png" id="5_r1td8"]
 
 [sub_resource type="Shortcut" id="Shortcut_fxhpf"]
