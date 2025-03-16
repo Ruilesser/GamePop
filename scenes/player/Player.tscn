@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dud8oki321fc6"]
+[gd_scene load_steps=57 format=3 uid="uid://dud8oki321fc6"]
 
 [ext_resource type="Script" path="res://scenes/player/Player.gd" id="1_mqkvw"]
 [ext_resource type="Texture2D" uid="uid://dkex4wuc0jd7b" path="res://assets/sprites/player/IDLE.png" id="2_nugvh"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://28plp1k5jgod" path="res://assets/sprites/player/SLIDE.png" id="7_541qn"]
 [ext_resource type="Script" path="res://scenes/player/Animator.gd" id="9_31hri"]
 [ext_resource type="Texture2D" uid="uid://dqvdyfekvcs27" path="res://assets/sprites/misc/Dice.png" id="10_3rtdg"]
+[ext_resource type="PackedScene" uid="uid://db8u5g81615k5" path="res://scenes/util/hitbox/Hitbox.tscn" id="11_fjy2l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ghtk"]
 size = Vector2(21, 24)
@@ -352,6 +353,8 @@ animations = [{
 "speed": 14.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65m0w"]
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_mqkvw")
 metadata/MovementState = 0
@@ -361,8 +364,10 @@ metadata/StunType = 0
 visible = false
 position = Vector2(0.75, 8)
 shape = SubResource("RectangleShape2D_1ghtk")
+disabled = true
 
 [node name="StandingCol" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(2.5, 3)
 shape = SubResource("RectangleShape2D_1ghtk")
 
@@ -378,3 +383,13 @@ visible = false
 position = Vector2(0, -29)
 sprite_frames = SubResource("SpriteFrames_cmsrf")
 animation = &"roll"
+
+[node name="Hitbox" parent="." instance=ExtResource("11_fjy2l")]
+unique_name_in_owner = true
+position = Vector2(19, 3)
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("RectangleShape2D_65m0w")
+disabled = false
+
+[editable path="Hitbox"]
