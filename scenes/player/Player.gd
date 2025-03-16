@@ -69,6 +69,20 @@ func _play_dice_animation(result: int):
 	%DiceRollAnimator.visible = false
 	attacking_debounce = false
 
+# Get the attack function for the hitbox.
+func _get_attack_function(group: String, damage: int):
+	var already_detected = []
+	for body in %Hitbox.get_overlapping_bodies():
+		if body in already_detected or not body.is_in_group(group):
+			continue
+		already_detected.append(body)
+		body.get_health_controller().take_damage(damage)
+	return func(enemy):
+		if enemy in already_detected or not enemy.is_in_group(group):
+			return
+		already_detected.append(enemy)
+		enemy.get_health_controller().take_damage(damage)
+
 # Process the movement state and animations
 func _process_movement_meta():
 	match movement_state:
@@ -90,10 +104,14 @@ func _process_attacking():
 	if is_stunned() or attacking_debounce:
 		return
 	var reset_stun = set_attacking_stun()
-	%AnimatedSprite2D.play("punch%d" % (combo_number + 1))
 	var damage = _get_random_damage()
+	var attack_function = _get_attack_function("enemy", damage)
+	# The entirety of this is cursed please ignore
+	%Hitbox.connect("body_entered", attack_function)
 	call_deferred("_play_dice_animation", damage)
+	%AnimatedSprite2D.play("punch%d" % (combo_number + 1))
 	await %AnimatedSprite2D.animation_finished
+	%Hitbox.disconnect("body_entered", attack_function)
 	reset_stun.call()
 	combo_number = (combo_number + 1) % max_combo
 	%AnimatedSprite2D.match_movement_animation_on_state(movement_state)
@@ -103,7 +121,6 @@ func _process(_delta):
 	_process_stun_logic()
 	if Input.is_action_pressed("ui_attack"):
 		_process_attacking()
-
 
 func set_standing_collision(value): # toggle between standing and sliding collision
 	$StandingCol.set_disabled(value)
@@ -124,9 +141,12 @@ func _physics_process(delta):
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		var direction = Input.get_axis("ui_left", "ui_right")
 		if direction and not is_stunned(): # move in the directionsdadwsa
+			var hitbox_distance = abs(%Hitbox.position.x - %StandingCol.position.x)
 			if direction == 1:
 				%AnimatedSprite2D.flip_h = false
+				%Hitbox.position.x = %StandingCol.position.x + hitbox_distance
 			else:
+				%Hitbox.position.x = %StandingCol.position.x - hitbox_distance
 				%AnimatedSprite2D.flip_h = true
 			#movement_state = SKID
 			velocity.x = SPEED * direction
