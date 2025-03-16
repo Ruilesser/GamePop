@@ -43,7 +43,6 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_down"):
 		#keep sliding as long as button is held
 		#momentum is locked here
-		#print("helloegstgh")
 		movement_state = SLIDE
 		if((%AnimatedSprite2D.flip_h)):
 			velocity.x = move_toward(velocity.x,SLIDING_SPEED*-1,DECEL_RATE)
