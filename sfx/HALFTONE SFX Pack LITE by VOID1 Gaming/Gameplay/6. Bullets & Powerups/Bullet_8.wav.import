@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://qu3jpntwp0lm"
+path="res://.godot/imported/Bullet_8.wav-893f94dd6f03f64a1dd8fff4e16678e4.sample"
+
+[deps]
+
+source_file="res://sfx/HALFTONE SFX Pack LITE by VOID1 Gaming/Gameplay/6. Bullets & Powerups/Bullet_8.wav"
+dest_files=["res://.godot/imported/Bullet_8.wav-893f94dd6f03f64a1dd8fff4e16678e4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

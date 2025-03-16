@@ -67,8 +67,9 @@ _data = {
 script = ExtResource("1_63ryh")
 
 [node name="Label" type="Label" parent="."]
+offset_top = -20.0
 offset_right = 94.0
-offset_bottom = 23.0
+offset_bottom = 3.00004
 theme_override_colors/font_color = Color(1, 0.905882, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.730456, 0.213328, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)

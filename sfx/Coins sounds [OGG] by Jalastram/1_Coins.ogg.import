@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://qdgqgbmnbmmr"
+path="res://.godot/imported/1_Coins.ogg-18434a2e71376b1141add10601894e3c.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/Coins sounds [OGG] by Jalastram/1_Coins.ogg"
+dest_files=["res://.godot/imported/1_Coins.ogg-18434a2e71376b1141add10601894e3c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
