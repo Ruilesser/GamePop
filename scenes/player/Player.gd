@@ -7,7 +7,7 @@ const JUMP_VELOCITY = -400.0
 const DECEL_RATE = 15.0
 var direction : float
 enum {IDLE, RUN, JUMP, SKID, SLIDE}
-const SLIDING_SPEED = SPEED + 15
+const SLIDING_SPEED = SPEED + 50
 
 var movement_state: int = IDLE
 
@@ -48,27 +48,31 @@ func _physics_process(delta):
 			velocity.x = move_toward(velocity.x,SLIDING_SPEED*-1,DECEL_RATE)
 		else:
 			velocity.x = move_toward(velocity.x,SLIDING_SPEED, DECEL_RATE)
+		
+		if(not is_on_floor()):
+			# Add the gravity.
+			velocity += get_gravity() * delta
+			
 		move_and_slide()
 		return
 
-	if is_on_floor():
-		# Get the input direction and handle the movement/deceleration.
-		direction = Input.get_axis("ui_left", "ui_right")
-		if direction: #move in the directionsdadwsa
-			if direction == 1:
-				%AnimatedSprite2D.flip_h = false
-			else:
-				%AnimatedSprite2D.flip_h = true
-			movement_state = RUN
-			velocity.x = SPEED * direction
-		else:#stop moving
-			if(velocity.x == 0):
-				movement_state = IDLE
-			else:
-				movement_state = SKID
-				velocity.x = move_toward(velocity.x, 0, DECEL_RATE) #move toward 0 while holding LEFT
-	
-	else:
+# Get the input direction and handle the movement/deceleration.
+	direction = Input.get_axis("ui_left", "ui_right")
+	if direction: #move in the directionsdadwsa
+		if direction == 1:
+			%AnimatedSprite2D.flip_h = false
+		else:
+			%AnimatedSprite2D.flip_h = true
+		movement_state = RUN
+		velocity.x = SPEED * direction
+	else:#stop moving
+		if(velocity.x == 0):
+			movement_state = IDLE
+		else:
+			movement_state = SKID
+			velocity.x = move_toward(velocity.x, 0, DECEL_RATE) #move toward 0 while holding LEFT
+				
+	if not is_on_floor():
 		movement_state = JUMP
 		# Add the gravity.
 		velocity += get_gravity() * delta
