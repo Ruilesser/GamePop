@@ -2,11 +2,10 @@ extends TileMapLayer
 
 @export var player: NodePath
 var player_node
-var redraw : bool = false
+var redraw : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player_node = get_node(player)
-	redraw_hp()
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,7 +14,7 @@ func _process(delta: float) -> void:
 		redraw_hp()
 	
 func redraw_hp() -> void:
-	var bars = ceil(float(player_node.current_health)/20)
+	var bars = ceil(float(player_node.current_health)/float(player_node.MaxHealth)*5)
 	print(global_position," ",player_node.global_position)
 	var cell_positions = get_used_cells()
 	for i in range(bars):
