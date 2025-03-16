@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://scenes/game/Rules_Menu_button.gd" id="1_xksma"]
 [ext_resource type="FontFile" uid="uid://cctbg6lhfjm4p" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_8eqcy"]
 [ext_resource type="Texture2D" uid="uid://dodcpak6xrcbm" path="res://assets/backgrounds/Menu.png" id="3_n5bxi"]
-[ext_resource type="StyleBox" uid="uid://bnqq1gd6jmdas" path="res://assets/button_style_box.tres" id="4_kcwd6"]
+[ext_resource type="StyleBox" path="res://assets/button_style_box.tres" id="4_kcwd6"]
 [ext_resource type="StyleBox" path="res://assets/Focus_Button.tres" id="4_yun7b"]
-[ext_resource type="StyleBox" uid="uid://np80di4imgqw" path="res://assets/Hover_Button.tres" id="5_k4ajs"]
+[ext_resource type="StyleBox" path="res://assets/Hover_Button.tres" id="5_k4ajs"]
 [ext_resource type="Texture2D" uid="uid://cw5e86se5b55a" path="res://assets/backgrounds/BG.png" id="5_r1td8"]
 [ext_resource type="AudioStream" uid="uid://cy0ndq7pmi7je" path="res://sfx/gambling_ost.wav" id="9_y3vp7"]
 
