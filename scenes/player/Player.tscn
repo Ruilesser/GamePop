@@ -200,7 +200,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"punch1",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -217,7 +217,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"punch2",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -271,7 +271,7 @@ shape = SubResource("RectangleShape2D_1ghtk")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_lkk0i")
-animation = &"punch1"
+animation = &"punch2"
 frame = 3
 frame_progress = 1.0
 script = ExtResource("9_31hri")
