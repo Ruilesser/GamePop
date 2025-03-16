@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dud8oki321fc6"]
+[gd_scene load_steps=60 format=3 uid="uid://dud8oki321fc6"]
 
 [ext_resource type="Script" path="res://scenes/player/Player.gd" id="1_mqkvw"]
 [ext_resource type="Texture2D" uid="uid://dkex4wuc0jd7b" path="res://assets/sprites/player/IDLE.png" id="2_nugvh"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://dqvdyfekvcs27" path="res://assets/sprites/misc/Dice.png" id="10_3rtdg"]
 [ext_resource type="PackedScene" uid="uid://db8u5g81615k5" path="res://scenes/util/hitbox/Hitbox.tscn" id="11_fjy2l"]
 [ext_resource type="PackedScene" uid="uid://dfleewerb4fl" path="res://scenes/util/health/Health.tscn" id="12_trjcv"]
+[ext_resource type="PackedScene" uid="uid://cntal7mo8v4s7" path="res://scenes/util/stun/Stun.tscn" id="13_h66t2"]
+[ext_resource type="PackedScene" uid="uid://cru8xaixy7tu5" path="res://scenes/util/combat/Combat.tscn" id="14_1mme5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ghtk"]
 size = Vector2(28, 17)
@@ -359,6 +361,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_mqkvw")
 HealthPath = NodePath("Health")
+StunPath = NodePath("Stun")
 metadata/MovementState = 0
 metadata/StunType = 0
 
@@ -398,5 +401,11 @@ disabled = false
 [node name="Health" parent="." instance=ExtResource("12_trjcv")]
 unique_name_in_owner = true
 MaxHealth = 200
+
+[node name="Stun" parent="." instance=ExtResource("13_h66t2")]
+unique_name_in_owner = true
+
+[node name="Combat" parent="." instance=ExtResource("14_1mme5")]
+unique_name_in_owner = true
 
 [editable path="Hitbox"]

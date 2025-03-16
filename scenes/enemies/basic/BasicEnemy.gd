@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
 @export var HealthPath: NodePath
+@export var StunPath: NodePath
 
 @onready var Health = get_node(HealthPath)
+@onready var Stun = get_node(StunPath)
 
 func _ready():
 	add_to_group("enemy")
@@ -17,3 +19,6 @@ func _physics_process(delta):
 
 func get_health_controller():
 	return Health
+
+func get_stun_controller():
+	return Stun

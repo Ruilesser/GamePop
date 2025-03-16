@@ -29,6 +29,7 @@ color = Color(1, 0.921569, 0.592157, 1)
 color_ramp = SubResource("GradientTexture1D_1rux7")
 
 [node name="Hit_Effect" type="GPUParticles2D"]
+z_index = 2
 emitting = false
 amount = 40
 process_material = SubResource("ParticleProcessMaterial_y38ls")
