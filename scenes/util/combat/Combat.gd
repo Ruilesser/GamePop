@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var hit_effect_scene = preload("res://scenes/FX/Hit_Effect.tscn")
+
 @export var max_combo = 2
 var combo_number = 0
 
@@ -7,6 +9,7 @@ var combo_number = 0
 func _attack_enemy(enemy, damage: int):
 	enemy.get_health_controller().take_damage(damage)
 	call_deferred("_play_hurt_animation", enemy)
+	spawn_hit_effect(enemy.global_position)
 
 # Play the hurt animation.
 func _play_hurt_animation(enemy):
@@ -14,6 +17,22 @@ func _play_hurt_animation(enemy):
 	animator.play("hurt")
 	await animator.animation_finished
 	animator.play("idle")
+
+# When calling, make sure to put hit_position as the one who is taking damage
+func spawn_hit_effect(hit_position: Vector2):
+	# Change node to whatever works
+	var hit_effect = hit_effect_scene.instantiate()
+
+	# Generate random position
+	var random_offset = Vector2(randf_range(-10, 10), randf_range(-10, 10))
+
+	hit_effect.global_position = hit_position + random_offset
+
+	if hit_effect is GPUParticles2D:
+		hit_effect.emitting = true
+
+	get_tree().current_scene.add_child(hit_effect)
+
 
 # Get the attack function for the hitbox.
 func _get_attack_function(group: String, damage: int):
