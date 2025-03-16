@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://wl11sgkxst1s"]
+[gd_scene load_steps=12 format=4 uid="uid://wl11sgkxst1s"]
 
 [ext_resource type="Texture2D" uid="uid://l775mx6sdw0l" path="res://assets/tilesets/Tile_set.png" id="2_kvqbu"]
 [ext_resource type="PackedScene" uid="uid://dud8oki321fc6" path="res://scenes/player/Player.tscn" id="3_c4gvi"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cw5e86se5b55a" path="res://assets/backgrounds/BG.png" id="7_6axsi"]
 [ext_resource type="PackedScene" uid="uid://c1lc0wpvh7axe" path="res://scenes/enemies/basic/BasicEnemy.tscn" id="7_horas"]
 [ext_resource type="Script" path="res://scenes/game/score.gd" id="8_m2yxu"]
+[ext_resource type="AudioStream" uid="uid://cy0ndq7pmi7je" path="res://sfx/gambling_ost.wav" id="9_ubr7h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kwctc"]
 texture = ExtResource("2_kvqbu")
@@ -415,3 +416,8 @@ texture = ExtResource("7_6axsi")
 
 [node name="BasicEnemy" parent="Enemies" instance=ExtResource("7_horas")]
 position = Vector2(549, 170)
+
+[node name="GamblingOst" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ubr7h")
+volume_db = -3.0
+autoplay = true
