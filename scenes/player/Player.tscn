@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://28plp1k5jgod" path="res://assets/sprites/player/SLIDE.png" id="7_541qn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ghtk"]
-size = Vector2(21, 24)
+size = Vector2(20, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pwe4b"]
 atlas = ExtResource("2_puxw3")
@@ -226,14 +226,14 @@ script = ExtResource("1_mqkvw")
 visible = false
 position = Vector2(0.75, 8)
 shape = SubResource("RectangleShape2D_1ghtk")
+disabled = true
 
 [node name="StandingCol" type="CollisionShape2D" parent="."]
-position = Vector2(2.5, 3)
+position = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_1ghtk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_lkk0i")
 animation = &"run"
-frame = 5
-frame_progress = 0.557091
