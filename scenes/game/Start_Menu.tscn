@@ -1,13 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://yfdab0yowhhh"]
+[gd_scene load_steps=7 format=3 uid="uid://yfdab0yowhhh"]
 
 [ext_resource type="Script" path="res://scenes/game/Start_Button.gd" id="1_vc1sg"]
 [ext_resource type="Script" path="res://scenes/game/Rules_Menu_button.gd" id="1_xksma"]
 [ext_resource type="FontFile" uid="uid://cctbg6lhfjm4p" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_8eqcy"]
-[ext_resource type="Texture2D" uid="uid://cihu3qwi3nwtr" path="res://assets/backgrounds/full_moon.png" id="2_rdxd0"]
+[ext_resource type="Texture2D" uid="uid://dodcpak6xrcbm" path="res://assets/backgrounds/Menu.png" id="3_n5bxi"]
+[ext_resource type="Texture2D" uid="uid://cw5e86se5b55a" path="res://assets/backgrounds/BG.png" id="5_r1td8"]
 
 [sub_resource type="Shortcut" id="Shortcut_fxhpf"]
 
 [node name="StartMenu" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -582.0
+offset_top = -325.0
+offset_right = 579.0
+offset_bottom = 397.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_r1td8")
 
 [node name="settings button" type="Button" parent="."]
 visible = false
@@ -61,7 +76,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_rdxd0")
+texture = ExtResource("3_n5bxi")
 metadata/_edit_use_anchors_ = true
 
 [node name="start button" type="Button" parent="rules button"]
