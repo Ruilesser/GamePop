@@ -1,5 +1,6 @@
-[gd_scene load_steps=36 format=3 uid="uid://c1lc0wpvh7axe"]
+[gd_scene load_steps=38 format=3 uid="uid://c1lc0wpvh7axe"]
 
+[ext_resource type="Script" path="res://scenes/enemies/basic/BasicEnemy.gd" id="1_5wklg"]
 [ext_resource type="Texture2D" uid="uid://d1vabf4g8q5qe" path="res://assets/sprites/enemies/basicenemy/Enemy_Hurt-Sheet.png" id="1_p1ldt"]
 [ext_resource type="Texture2D" uid="uid://duvpiegqtwodp" path="res://assets/sprites/enemies/basicenemy/Enemy_Idle-Sheet.png" id="2_whyw2"]
 [ext_resource type="Texture2D" uid="uid://gr1undbu2bv6" path="res://assets/sprites/enemies/basicenemy/Enemy_Jump-Sheet.png" id="3_mvdl5"]
@@ -7,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://2d7bgacfapfc" path="res://assets/sprites/enemies/basicenemy/Enemy_Fight_2-Sheet.png" id="5_73h6s"]
 [ext_resource type="Texture2D" uid="uid://b3ee5e1p0me2p" path="res://assets/sprites/enemies/basicenemy/Enemy_Run-Sheet.png" id="6_isufr"]
 [ext_resource type="Script" path="res://scenes/player/Animator.gd" id="8_7ltfd"]
+[ext_resource type="PackedScene" uid="uid://dfleewerb4fl" path="res://scenes/util/health/Health.tscn" id="9_bh47x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ux3lp"]
 size = Vector2(21, 24)
@@ -227,6 +229,8 @@ animations = [{
 }]
 
 [node name="BasicEnemy" type="CharacterBody2D"]
+script = ExtResource("1_5wklg")
+HealthPath = NodePath("Health")
 
 [node name="StandingCol" type="CollisionShape2D" parent="."]
 position = Vector2(2.5, 3)
@@ -237,3 +241,6 @@ unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_mp38o")
 animation = &"idle"
 script = ExtResource("8_7ltfd")
+
+[node name="Health" parent="." instance=ExtResource("9_bh47x")]
+MaxHealth = 15
