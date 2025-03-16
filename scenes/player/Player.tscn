@@ -378,9 +378,3 @@ visible = false
 position = Vector2(0, -29)
 sprite_frames = SubResource("SpriteFrames_cmsrf")
 animation = &"roll"
-
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -9.0
-offset_top = -38.0
-offset_right = 8.0
-offset_bottom = -21.0
