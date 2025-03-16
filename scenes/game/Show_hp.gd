@@ -11,12 +11,28 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(player_node.current_health)
 	if (redraw):
 		redraw_hp()
 	
 func redraw_hp() -> void:
-	var bars = ceil(player_node.current_health/20)
+	var bars = ceil(float(player_node.current_health)/20)
+	print(global_position," ",player_node.global_position)
 	var cell_positions = get_used_cells()
 	for i in range(bars):
-		set_cell(cell_positions[i],0,get_cell_atlas_coords(cell_positions[i])+Vector2i(3,0),0)
+		var position = Vector2i(4,0)
+		if (i == 0):
+			position = Vector2i(3,0)
+		elif(i == 4):
+			position = Vector2i(5,0)
+				
+		set_cell(cell_positions[i],0,position,0)
+	if(4-bars != 0):
+		for i in range(4,bars-1,-1):
+			print(bars)
+			var position = Vector2i(1,0)
+			if (i == 0):
+				position = Vector2i(0,0)
+			elif(i == 4):
+				position = Vector2i(2,0)
+					
+			set_cell(cell_positions[i],0,position,0)
