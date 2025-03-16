@@ -20,6 +20,7 @@ func _process(_delta):
 			set_standing_collision(true);
 		Enums.MovementState.SLIDE:
 			set_standing_collision(false)
+	%AnimatedSprite2D.play_movement_animation(movement_state)
 
 func set_standing_collision(value): # toggle between standing and sliding collision
 	$StandingCol.set_disabled(value)

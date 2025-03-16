@@ -8,8 +8,12 @@ var old_movement_state: int = Enums.MovementState.IDLE
 func _ready():
 	pass # Replace with function body.
 
-func _update_animation():
-	match get_parent().get_meta("MovementState"):
+# Play the animation based on the movement state.
+func play_movement_animation(movement_state: int):
+	if old_movement_state == movement_state:
+		return
+	old_movement_state = movement_state
+	match movement_state:
 		Enums.MovementState.IDLE:
 			%AnimatedSprite2D.play("idle")
 		Enums.MovementState.RUN:
@@ -21,8 +25,3 @@ func _update_animation():
 			%AnimatedSprite2D.play("idle")
 		Enums.MovementState.SLIDE:
 			%AnimatedSprite2D.play("slide")
-
-func _process(_delta):
-	if old_movement_state != get_parent().get_meta("MovementState"):
-		old_movement_state = get_parent().get_meta("MovementState")
-		_update_animation()
