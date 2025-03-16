@@ -12,6 +12,9 @@ var stun_type: int = Enums.StunType.NONE
 var stun_flag: int = 0
 var stun_time_left: int = 0
 
+var combo_number: int = 0
+var max_combo: int = 2
+
 # Check if the player is stunned.
 func is_stunned():
 	return stun_type != Enums.StunType.NONE
@@ -58,9 +61,23 @@ func _process_movement_meta():
 				set_standing_collision(false)
 	%AnimatedSprite2D.play_movement_animation(movement_state)
 
+# Process the attacking logic.
+func _process_attacking():
+	# Could use a FSM here but I don't want to overcomplicate things.
+	if is_stunned():
+		return
+	var reset_stun = set_attacking_stun()
+	%AnimatedSprite2D.play("punch%d" % (combo_number + 1))
+	combo_number = (combo_number + 1) % max_combo
+	await %AnimatedSprite2D.animation_finished
+	reset_stun.call()
+	%AnimatedSprite2D.match_movement_animation_on_state(movement_state)
+
 func _process(_delta):
 	_process_movement_meta()
 	_process_stun_logic()
+	if Input.is_action_pressed("ui_attack"):
+		_process_attacking()
 
 
 func set_standing_collision(value): # toggle between standing and sliding collision
@@ -81,7 +98,7 @@ func _physics_process(delta):
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		var direction = Input.get_axis("ui_left", "ui_right")
-		if direction: # move in the directionsdadwsa
+		if direction and not is_stunned(): # move in the directionsdadwsa
 			if direction == 1:
 				%AnimatedSprite2D.flip_h = false
 			else:
