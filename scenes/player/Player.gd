@@ -16,18 +16,14 @@ const SLIDING_SPEED = SPEED + 100
 @onready var Stun = get_node(StunPath)
 
 var movement_state: int = Enums.MovementState.IDLE
-
-var combo_number: int = 0
 var attacking_debounce: bool = false
-var max_combo: int = 2
-
-var current_score = 0
-
+var current_score: int = 0
 
 # Gets random damage between 1 and 6. (Might change to give higher chances with hit streaks i dont know)
 func _get_random_damage() -> int:
 	return randi_range(1, 6)
 
+# Plays the dice animation.
 func _play_dice_animation(result: int):
 	attacking_debounce = true
 	%DiceRollAnimator.visible = true
@@ -39,20 +35,6 @@ func _play_dice_animation(result: int):
 	await get_tree().create_timer(DICE_DISPLAY_TIME).timeout
 	%DiceRollAnimator.visible = false
 	attacking_debounce = false
-
-# Get the attack function for the hitbox.
-func _get_attack_function(group: String, damage: int):
-	var already_detected = []
-	for body in %Hitbox.get_overlapping_bodies():
-		if body in already_detected or not body.is_in_group(group):
-			continue
-		already_detected.append(body)
-		body.get_health_controller().take_damage(damage)
-	return func(enemy):
-		if enemy in already_detected or not enemy.is_in_group(group):
-			return
-		already_detected.append(enemy)
-		enemy.get_health_controller().take_damage(damage)
 
 # Process the movement state and animations
 func _process_movement_meta():
@@ -73,21 +55,11 @@ func _process_movement_meta():
 
 # Process the attacking logic.
 func _process_attacking():
-	# Could use a FSM here but I don't want to overcomplicate things.
 	if %Stun.is_stunned() or attacking_debounce:
 		return
-	var reset_stun = %Stun.set_attacking_stun()
-	var damage = _get_random_damage()
-	var attack_function = _get_attack_function("enemy", damage)
-	# The entirety of this is cursed please ignore
-	%Hitbox.connect("body_entered", attack_function)
+	var damage: int = _get_random_damage()
 	call_deferred("_play_dice_animation", damage)
-	%AnimatedSprite2D.play("punch%d" % (combo_number + 1))
-	await %AnimatedSprite2D.animation_finished
-	%Hitbox.disconnect("body_entered", attack_function)
-	reset_stun.call()
-	combo_number = (combo_number + 1) % max_combo
-	%AnimatedSprite2D.match_movement_animation_on_state(Enums.MovementState.IDLE)
+	%Combat.process_attacking(damage)
 
 func _process(_delta):
 	_process_movement_meta()

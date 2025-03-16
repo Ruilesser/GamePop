@@ -4,17 +4,9 @@ extends Node2D
 @export var MaxHealth: int = 100
 var current_health: int = MaxHealth
 
-# Play the hurt animation.
-func _play_hurt_animation():
-    var animator = get_parent().get_node("AnimatedSprite2D")
-    animator.play("hurt")
-    await animator.animation_finished
-    animator.play("idle")
-
 # Take damage from the player.
 func take_damage(damage: int) -> int:
     current_health = max(0, current_health - damage)
-    call_deferred("_play_hurt_animation")
     return current_health
 
 # Heal the player.
