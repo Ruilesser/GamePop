@@ -39,7 +39,6 @@ func process_attacking(damage: int):
 	var attack_function = _get_attack_function("enemy", damage)
 	# The entirety of this is cursed please ignore
 	%Hitbox.connect("body_entered", attack_function)
-	call_deferred("_play_dice_animation", damage)
 	%AnimatedSprite2D.play("punch%d" % (combo_number + 1))
 	await %AnimatedSprite2D.animation_finished
 	%Hitbox.disconnect("body_entered", attack_function)
