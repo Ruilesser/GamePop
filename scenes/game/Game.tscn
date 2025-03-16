@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://wl11sgkxst1s"]
+[gd_scene load_steps=16 format=4 uid="uid://wl11sgkxst1s"]
 
 [ext_resource type="Texture2D" uid="uid://l775mx6sdw0l" path="res://assets/tilesets/Tile_set.png" id="2_kvqbu"]
 [ext_resource type="PackedScene" uid="uid://dud8oki321fc6" path="res://scenes/player/Player.tscn" id="3_c4gvi"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bvcgw644gve8g" path="res://assets/backgrounds/Parallax_1.png" id="5_qk776"]
 [ext_resource type="Texture2D" uid="uid://cpuvlwwr7a7vs" path="res://assets/backgrounds/Parallax_2.png" id="6_wriqj"]
 [ext_resource type="Texture2D" uid="uid://cw5e86se5b55a" path="res://assets/backgrounds/BG.png" id="7_6axsi"]
+[ext_resource type="Script" path="res://scenes/game/score.gd" id="8_m2yxu"]
 [ext_resource type="AudioStream" uid="uid://cy0ndq7pmi7je" path="res://sfx/gambling_ost.wav" id="9_ubr7h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kwctc"]
@@ -376,7 +377,7 @@ sources/0 = SubResource("TileSetAtlasSource_3aikh")
 [node name="Game" type="Node2D"]
 
 [node name="BasicEnemy" parent="." instance=ExtResource("5_hblgk")]
-position = Vector2(509, 286)
+position = Vector2(747, 286)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 323)
@@ -395,6 +396,14 @@ tile_map_data = PackedByteArray("AABBABYAAAAAAAAAAABCABYAAAABAAAAAABDABYAAAAEAAA
 tile_set = SubResource("TileSet_4mvh5")
 script = ExtResource("4_anpce")
 player = NodePath("../../Player/Health")
+
+[node name="Label" type="Label" parent="Camera2D"]
+offset_left = -184.0
+offset_top = -88.0
+offset_right = 22.0
+offset_bottom = -65.0
+text = "Score"
+script = ExtResource("8_m2yxu")
 
 [node name="Player" parent="." instance=ExtResource("3_c4gvi")]
 position = Vector2(507, 71)
