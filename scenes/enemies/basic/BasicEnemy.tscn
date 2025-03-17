@@ -251,7 +251,7 @@ script = ExtResource("8_7ltfd")
 
 [node name="Health" parent="." instance=ExtResource("9_bh47x")]
 unique_name_in_owner = true
-MaxHealth = 10
+MaxHealth = 6
 
 [node name="Stun" parent="." instance=ExtResource("10_5nl6t")]
 unique_name_in_owner = true
