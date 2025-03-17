@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=4 uid="uid://wl11sgkxst1s"]
+[gd_scene load_steps=17 format=4 uid="uid://wl11sgkxst1s"]
 
+[ext_resource type="Script" path="res://scenes/game/game_loop.gd" id="1_c0i62"]
 [ext_resource type="Texture2D" uid="uid://l775mx6sdw0l" path="res://assets/tilesets/Tile_set.png" id="2_kvqbu"]
 [ext_resource type="PackedScene" uid="uid://dud8oki321fc6" path="res://scenes/player/Player.tscn" id="3_c4gvi"]
 [ext_resource type="Texture2D" uid="uid://dr58njsk2es7u" path="res://assets/tilesets/06 (1).png" id="3_dmmlm"]
@@ -375,6 +376,7 @@ tile_size = Vector2i(6, 10)
 sources/0 = SubResource("TileSetAtlasSource_3aikh")
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_c0i62")
 
 [node name="BasicEnemy" parent="." instance=ExtResource("5_hblgk")]
 position = Vector2(747, 286)
@@ -404,6 +406,12 @@ offset_right = 22.0
 offset_bottom = -65.0
 text = "Score"
 script = ExtResource("8_m2yxu")
+
+[node name="SpawnPoint1" type="Marker2D" parent="Camera2D"]
+position = Vector2(-304, 0)
+
+[node name="SpawnPoint2" type="Marker2D" parent="Camera2D"]
+position = Vector2(256, 0)
 
 [node name="Player" parent="." instance=ExtResource("3_c4gvi")]
 position = Vector2(507, 71)
