@@ -1,14 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://yfdab0yowhhh"]
+[gd_scene load_steps=13 format=3 uid="uid://yfdab0yowhhh"]
 
 [ext_resource type="Script" path="res://scenes/game/Start_Button.gd" id="1_vc1sg"]
 [ext_resource type="Script" path="res://scenes/game/Rules_Menu_button.gd" id="1_xksma"]
 [ext_resource type="FontFile" uid="uid://cctbg6lhfjm4p" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_8eqcy"]
 [ext_resource type="Texture2D" uid="uid://dodcpak6xrcbm" path="res://assets/backgrounds/Menu.png" id="3_n5bxi"]
-[ext_resource type="StyleBox" path="res://assets/button_style_box.tres" id="4_kcwd6"]
-[ext_resource type="StyleBox" path="res://assets/Focus_Button.tres" id="4_yun7b"]
-[ext_resource type="StyleBox" path="res://assets/Hover_Button.tres" id="5_k4ajs"]
+[ext_resource type="StyleBox" uid="uid://bnqq1gd6jmdas" path="res://assets/button_style_box.tres" id="4_kcwd6"]
+[ext_resource type="StyleBox" uid="uid://fappheyylone" path="res://assets/Focus_Button.tres" id="4_yun7b"]
+[ext_resource type="StyleBox" uid="uid://np80di4imgqw" path="res://assets/Hover_Button.tres" id="5_k4ajs"]
 [ext_resource type="Texture2D" uid="uid://cw5e86se5b55a" path="res://assets/backgrounds/BG.png" id="5_r1td8"]
 [ext_resource type="AudioStream" uid="uid://cy0ndq7pmi7je" path="res://sfx/gambling_ost.wav" id="9_y3vp7"]
+[ext_resource type="AudioStream" uid="uid://caa0c5iwquq0d" path="res://sfx/HALFTONE SFX Pack LITE by VOID1 Gaming/UI/1. Buttons/Button_24.wav" id="10_fd2jg"]
+[ext_resource type="AudioStream" uid="uid://c1qy1pum740on" path="res://sfx/HALFTONE SFX Pack LITE by VOID1 Gaming/UI/1. Buttons/Button_17.wav" id="11_xn20l"]
 
 [sub_resource type="Shortcut" id="Shortcut_fxhpf"]
 
@@ -144,3 +146,15 @@ structured_text_bidi_override_options = [null]
 stream = ExtResource("9_y3vp7")
 volume_db = -3.748
 autoplay = true
+
+[node name="Button24" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_fd2jg")
+volume_db = -12.0
+
+[node name="Button17" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_xn20l")
+volume_db = -12.0
+
+[connection signal="mouse_entered" from="rules button" to="rules button" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="rules button/start button" to="settings button" method="_on_start_button_mouse_entered"]
+[connection signal="pressed" from="rules button/start button" to="rules button" method="_on_start_button_pressed"]
