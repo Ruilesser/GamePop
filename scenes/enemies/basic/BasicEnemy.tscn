@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c1lc0wpvh7axe"]
+[gd_scene load_steps=42 format=3 uid="uid://c1lc0wpvh7axe"]
 
 [ext_resource type="Script" path="res://scenes/enemies/basic/BasicEnemy.gd" id="1_5wklg"]
 [ext_resource type="Texture2D" uid="uid://d1vabf4g8q5qe" path="res://assets/sprites/enemies/basicenemy/Enemy_Hurt-Sheet.png" id="1_p1ldt"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://scenes/player/Animator.gd" id="8_7ltfd"]
 [ext_resource type="PackedScene" uid="uid://dfleewerb4fl" path="res://scenes/util/health/Health.tscn" id="9_bh47x"]
 [ext_resource type="PackedScene" uid="uid://cntal7mo8v4s7" path="res://scenes/util/stun/Stun.tscn" id="10_5nl6t"]
+[ext_resource type="PackedScene" uid="uid://cru8xaixy7tu5" path="res://scenes/util/combat/Combat.tscn" id="11_3323s"]
+[ext_resource type="PackedScene" uid="uid://db8u5g81615k5" path="res://scenes/util/hitbox/Hitbox.tscn" id="12_6v8x8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ux3lp"]
 size = Vector2(21, 24)
@@ -229,11 +231,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_516lg"]
+
 [node name="BasicEnemy" type="CharacterBody2D"]
 script = ExtResource("1_5wklg")
 HealthPath = NodePath("Health")
+StunPath = NodePath("Stun")
 
 [node name="StandingCol" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(2.5, 3)
 shape = SubResource("RectangleShape2D_ux3lp")
 
@@ -249,3 +255,16 @@ MaxHealth = 10
 
 [node name="Stun" parent="." instance=ExtResource("10_5nl6t")]
 unique_name_in_owner = true
+
+[node name="Combat" parent="." instance=ExtResource("11_3323s")]
+unique_name_in_owner = true
+
+[node name="Hitbox" parent="Combat" instance=ExtResource("12_6v8x8")]
+unique_name_in_owner = true
+position = Vector2(19, 3)
+
+[node name="CollisionShape2D" parent="Combat/Hitbox" index="0"]
+shape = SubResource("RectangleShape2D_516lg")
+disabled = false
+
+[editable path="Combat/Hitbox"]

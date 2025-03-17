@@ -1,5 +1,7 @@
 extends Node2D
 
+const DEFAULT_STUN_TIME: float = 0.225
+
 @onready var hit_effect_scene = preload("res://scenes/FX/Hit_Effect.tscn")
 @onready var enemy_death_effect = preload("res://scenes/FX/enemy_death_particles.tscn")
 @onready var player_death_effect = preload("res://scenes/FX/player_death_particles.tscn")
@@ -23,6 +25,7 @@ func _enemy_is_dead(enemy):
 # Attack the enemy
 func _attack_enemy(enemy, damage: int):
 	enemy.get_health_controller().take_damage(damage)
+	enemy.get_stun_controller().set_timed_stun(DEFAULT_STUN_TIME)
 	call_deferred("_play_hurt_animation", enemy)
 	spawn_effect(enemy.global_position, hit_effect_scene)
 	if enemy.get_health_controller().is_dead():
@@ -67,12 +70,12 @@ func _get_attack_function(group: String, damage: int):
 
 
 # Process the attacking logic.
-func process_attacking(damage: int):
+func process_attacking(damage: int, group: String):
 	# Could use a FSM here but I don't want to overcomplicate things.
 	if %Stun.is_stunned():
 		return
 	var reset_stun = %Stun.set_attacking_stun()
-	var attack_function = _get_attack_function("enemy", damage)
+	var attack_function = _get_attack_function(group, damage)
 	# The entirety of this is cursed please ignore
 	%Hitbox.connect("body_entered", attack_function)
 	%AnimatedSprite2D.play("punch%d" % (combo_number + 1))
