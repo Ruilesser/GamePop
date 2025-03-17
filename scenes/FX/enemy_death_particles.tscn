@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://bh38rukhsac8g"]
+
+[ext_resource type="Script" path="res://scenes/FX/hit_effect.gd" id="1_rl7cq"]
+
+[sub_resource type="Gradient" id="Gradient_xyd53"]
+offsets = PackedFloat32Array(0, 0.819672)
+colors = PackedColorArray(0, 0.0960001, 0.64, 1, 1, 0, 0.0166664, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1rux7"]
+gradient = SubResource("Gradient_xyd53")
+
+[sub_resource type="Curve" id="Curve_vwjf0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ku8qt"]
+curve = SubResource("Curve_vwjf0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y38ls"]
+lifetime_randomness = 0.25
+particle_flag_disable_z = true
+emission_shape = 4
+emission_point_count = 1
+spread = 180.0
+initial_velocity_min = 40.0
+initial_velocity_max = 80.0
+gravity = Vector3(0, 98, 0)
+scale_min = 4.0
+scale_max = 8.0
+scale_curve = SubResource("CurveTexture_ku8qt")
+color_ramp = SubResource("GradientTexture1D_1rux7")
+
+[node name="Particles" type="GPUParticles2D"]
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_y38ls")
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("1_rl7cq")

@@ -1,0 +1,164 @@
+[gd_scene load_steps=14 format=3 uid="uid://bxwnjxklcx7cc"]
+
+[ext_resource type="Script" path="res://scenes/game/Rules_Menu_button.gd" id="1_p6eum"]
+[ext_resource type="Texture2D" uid="uid://cw5e86se5b55a" path="res://assets/backgrounds/BG.png" id="1_ycpa0"]
+[ext_resource type="FontFile" uid="uid://cctbg6lhfjm4p" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_7gtqr"]
+[ext_resource type="Texture2D" uid="uid://cihu3qwi3nwtr" path="res://assets/backgrounds/full_moon.png" id="3_su3p8"]
+[ext_resource type="StyleBox" path="res://assets/Focus_Button.tres" id="4_ibg8l"]
+[ext_resource type="Script" path="res://scenes/game/Start_Button.gd" id="4_kp1sx"]
+[ext_resource type="StyleBox" path="res://assets/Hover_Button.tres" id="5_4n286"]
+[ext_resource type="StyleBox" path="res://assets/button_style_box.tres" id="6_kr8om"]
+[ext_resource type="Script" path="res://scenes/game/return_to_main_button.gd" id="7_vg6a6"]
+[ext_resource type="AudioStream" uid="uid://cy0ndq7pmi7je" path="res://sfx/gambling_ost.wav" id="10_omk8e"]
+[ext_resource type="AudioStream" uid="uid://caa0c5iwquq0d" path="res://sfx/HALFTONE SFX Pack LITE by VOID1 Gaming/UI/1. Buttons/Button_24.wav" id="11_rgbqm"]
+[ext_resource type="AudioStream" uid="uid://c1qy1pum740on" path="res://sfx/HALFTONE SFX Pack LITE by VOID1 Gaming/UI/1. Buttons/Button_17.wav" id="12_yhkrv"]
+
+[sub_resource type="Shortcut" id="Shortcut_fxhpf"]
+
+[node name="Death_Menu" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.840366, 0.667729, 0.663409, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -582.0
+offset_top = -325.0
+offset_right = 579.0
+offset_bottom = 397.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_ycpa0")
+
+[node name="TextEdit2" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.0
+offset_top = -236.0
+offset_right = 213.0
+offset_bottom = -83.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.361792, 0.121758, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_7gtqr")
+theme_override_font_sizes/bold_italics_font_size = 50
+theme_override_font_sizes/italics_font_size = 50
+theme_override_font_sizes/mono_font_size = 50
+theme_override_font_sizes/normal_font_size = 50
+text = "GAMBLED
+AND LOST"
+fit_content = true
+structured_text_bidi_override_options = [null]
+
+[node name="settings button" type="Button" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = 64.0
+offset_right = 48.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(47.5, 15.5)
+text = "Settings
+"
+clip_text = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("1_p6eum")
+
+[node name="rules button" type="Button" parent="."]
+z_index = 2
+z_as_relative = false
+offset_left = -512.0
+offset_top = 127.0
+offset_right = 512.0
+offset_bottom = 192.0
+pivot_offset = Vector2(47.5, 15.5)
+theme_override_colors/font_color = Color(1, 0.894, 0.47, 1)
+theme_override_fonts/font = ExtResource("2_7gtqr")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = ExtResource("4_ibg8l")
+theme_override_styles/hover = ExtResource("5_4n286")
+theme_override_styles/normal = ExtResource("6_kr8om")
+text = "Main Menu"
+clip_text = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("7_vg6a6")
+
+[node name="rules image" type="TextureRect" parent="rules button"]
+visible = false
+top_level = true
+z_index = 1
+z_as_relative = false
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.5
+anchor_top = -0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_su3p8")
+metadata/_edit_use_anchors_ = true
+
+[node name="start button" type="Button" parent="rules button"]
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1088.0
+offset_top = -324.0
+offset_right = -64.0
+offset_bottom = -260.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(47.5, 15.5)
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.894, 0.47, 1)
+theme_override_fonts/font = ExtResource("2_7gtqr")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = ExtResource("4_ibg8l")
+theme_override_styles/hover = ExtResource("5_4n286")
+theme_override_styles/normal = ExtResource("6_kr8om")
+shortcut = SubResource("Shortcut_fxhpf")
+text = "Play Again"
+clip_text = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_kp1sx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="GamblingOst" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_omk8e")
+volume_db = -3.748
+autoplay = true
+
+[node name="Button24" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_rgbqm")
+volume_db = -12.0
+
+[node name="Button17" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_yhkrv")
+volume_db = -12.0
+
+[connection signal="mouse_entered" from="rules button" to="rules button" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="rules button/start button" to="rules button" method="_on_start_button_mouse_entered"]
+[connection signal="pressed" from="rules button/start button" to="rules button" method="_on_start_button_pressed"]

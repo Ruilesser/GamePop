@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://tve47h0ksalu"
+path="res://.godot/imported/Transition_3.wav-754e9c25f6aae307749f347351039ae0.sample"
+
+[deps]
+
+source_file="res://sfx/HALFTONE SFX Pack LITE by VOID1 Gaming/UI/4. Transitions/Transition_3.wav"
+dest_files=["res://.godot/imported/Transition_3.wav-754e9c25f6aae307749f347351039ae0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
