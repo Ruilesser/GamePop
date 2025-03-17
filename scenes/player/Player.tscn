@@ -400,7 +400,7 @@ disabled = false
 
 [node name="Health" parent="." instance=ExtResource("12_trjcv")]
 unique_name_in_owner = true
-MaxHealth = 200
+MaxHealth = 50
 
 [node name="Stun" parent="." instance=ExtResource("13_h66t2")]
 unique_name_in_owner = true
