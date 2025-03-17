@@ -16,7 +16,6 @@ func _ready() -> void:
 # Take damage from the player.
 func take_damage(damage: int) -> int:
 	current_health = max(0, current_health - damage)
-	hp_bar_script.redraw = true
 	print("Health: ", current_health)
 	return current_health
 

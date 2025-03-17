@@ -14,7 +14,6 @@ func _process(delta: float) -> void:
 		redraw_hp()
 	
 func redraw_hp() -> void:
-	redraw = false
 	var bars = ceil(float(player_node.current_health)/float(player_node.MaxHealth)*5)-1
 	print(bars)
 	var cell_positions = get_used_cells()
