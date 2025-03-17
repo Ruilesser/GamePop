@@ -98,6 +98,8 @@ func _physics_process(delta):
 			var collision = get_slide_collision(i)
 			if (collision.get_collider().is_in_group("enemy")):
 				print("enemy hit")
+				collision.get_collider().velocity.y -= 230
+				
 		return move_and_slide()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
